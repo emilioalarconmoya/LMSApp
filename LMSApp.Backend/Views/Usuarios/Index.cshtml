@@ -1,0 +1,117 @@
+﻿@model IEnumerable<LMSApp.Common.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RutUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodEmpresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCaducidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bloqueado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClaveSence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Profesion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comuna)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fono)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RutUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodEmpresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCaducidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCreacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bloqueado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClaveSence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Profesion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comuna)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fono)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UsuarioId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UsuarioId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UsuarioId })
+        </td>
+    </tr>
+}
+
+</table>
