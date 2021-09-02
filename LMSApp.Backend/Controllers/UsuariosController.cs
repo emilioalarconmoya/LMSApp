@@ -23,10 +23,7 @@ namespace LMSApp.Backend.Controllers
 
             //return View(await db.Usuarios.ToListAsync());
             return View(await db.Database.SqlQuery<Usuario>("exec proc_select_USUARIO_all_app @cod_empresa", new SqlParameter("@cod_empresa", 1)).ToListAsync());
-            //ViewResult aaa;
-            //aaa = View(db.Database.SqlQuery<Usuario>("exec proc_select_USUARIO_all @cod_empresa", new SqlParameter("@cod_empresa", 1)));
-            //return aaa;
-            //return await query.ToListAsync<ActionResult>();
+            
 
         }
 

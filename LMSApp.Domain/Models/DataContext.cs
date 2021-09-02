@@ -7,5 +7,7 @@
         {
 
         }
+
+        public System.Data.Entity.DbSet<LMSApp.Common.Models.Usuario> Usuarios { get; set; }
     }
 }
