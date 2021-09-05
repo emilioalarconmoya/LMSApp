@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{263574B1-8E7B-42F7-AFAF-1FE1139B2356}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ATENEUS.CLASES</RootNamespace>
+    <AssemblyName>ATENEUS.CLASES</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\DLACCION_BITACORA.cs" />
+    <Compile Include="DAL\DLACCION_BITACORAList.cs" />
+    <Compile Include="DAL\DLACTIVIDAD_CAPAC.cs" />
+    <Compile Include="DAL\DLACTIVIDAD_CAPACList.cs" />
+    <Compile Include="DAL\DLACTIVIDAD_FORO.cs" />
+    <Compile Include="DAL\DLACTIVIDAD_FOROList.cs" />
+    <Compile Include="DAL\DLACTIVIDAD_MALLA.cs" />
+    <Compile Include="DAL\DLACTIVIDAD_MALLAList.cs" />
+    <Compile Include="DAL\DLACTIVIDAD_TUTOR.cs" />
+    <Compile Include="DAL\DLACTIVIDAD_TUTORList.cs" />
+    <Compile Include="DAL\DLACTIVIDAD_UNIDAD.cs" />
+    <Compile Include="DAL\DLACTIVIDAD_UNIDADList.cs" />
+    <Compile Include="DAL\DLACTIVIDAD_USUARIO.cs" />
+    <Compile Include="DAL\DLACTIVIDAD_USUARIOList.cs" />
+    <Compile Include="DAL\DLALTERNATIVA.cs" />
+    <Compile Include="DAL\DLALTERNATIVAList.cs" />
+    <Compile Include="DAL\DLASIGNA_MOVIMIENTO.cs" />
+    <Compile Include="DAL\DLASIGNA_MOVIMIENTOList.cs" />
+    <Compile Include="DAL\DLATRIBUTO.cs" />
+    <Compile Include="DAL\DLATRIBUTOList.cs" />
+    <Compile Include="DAL\DLATRIBUTO_USUARIO.cs" />
+    <Compile Include="DAL\DLATRIBUTO_USUARIOList.cs" />
+    <Compile Include="DAL\DLAVISOS_HOME.cs" />
+    <Compile Include="DAL\DLAVISOS_HOMEList.cs" />
+    <Compile Include="DAL\DLBase.cs" />
+    <Compile Include="DAL\DLBITACORA_ACTIVIDAD_USUARIO.cs" />
+    <Compile Include="DAL\DLBITACORA_ACTIVIDAD_USUARIOList.cs" />
+    <Compile Include="DAL\DLBITACORA_ADMINISTRACION.cs" />
+    <Compile Include="DAL\DLBITACORA_ADMINISTRACIONList.cs" />
+    <Compile Include="DAL\DLBITACORA_CORREO.cs" />
+    <Compile Include="DAL\DLBITACORA_NAVEGACION.cs" />
+    <Compile Include="DAL\DLBITACORA_NAVEGACIONList.cs" />
+    <Compile Include="DAL\DLBITACORA_REPOSITORIO.cs" />
+    <Compile Include="DAL\DLBITACORA_REPOSITORIOList.cs" />
+    <Compile Include="DAL\DLCAMPO.cs" />
+    <Compile Include="DAL\DLCAMPOList.cs" />
+    <Compile Include="DAL\DLCAMPO_PLANTILLA.cs" />
+    <Compile Include="DAL\DLCAMPO_PLANTILLAList.cs" />
+    <Compile Include="DAL\DLCARACTERISTICA.cs" />
+    <Compile Include="DAL\DLCARACTERISTICAList.cs" />
+    <Compile Include="DAL\DLCATALOGO.cs" />
+    <Compile Include="DAL\DLCATALOGOList.cs" />
+    <Compile Include="DAL\DLCATALOGO_ACTIVIDAD.cs" />
+    <Compile Include="DAL\DLCATALOGO_ACTIVIDADList.cs" />
+    <Compile Include="DAL\DLCATALOGO_USUARIO.cs" />
+    <Compile Include="DAL\DLCATEGORIA_ACTILIDADList.cs" />
+    <Compile Include="DAL\DLCATEGORIA_ACTIVIDAD.cs" />
+    <Compile Include="DAL\DLCATEGORIA_PRODUCTO.cs" />
+    <Compile Include="DAL\DLCATEGORIA_PRODUCTOList.cs" />
+    <Compile Include="DAL\DLCOMENTARIO.cs" />
+    <Compile Include="DAL\DLCOMENTARIOList.cs" />
+    <Compile Include="DAL\DLCOMENTARIO_TUTOR.cs" />
+    <Compile Include="DAL\DLCOMENTARIO_TUTORList.cs" />
+    <Compile Include="DAL\DLCURSO.cs" />
+    <Compile Include="DAL\DLCURSOList.cs" />
+    <Compile Include="DAL\DLCURSO_ACTIVIDAD.cs" />
+    <Compile Include="DAL\DLCURSO_ACTIVIDADList.cs" />
+    <Compile Include="DAL\DLCURSO_MALLA.cs" />
+    <Compile Include="DAL\DLCURSO_MALLAList.cs" />
+    <Compile Include="DAL\DLDECLARACION_JURADA.cs" />
+    <Compile Include="DAL\DLDECLARACION_JURADAList.cs" />
+    <Compile Include="DAL\DLDEPENDENCIA.cs" />
+    <Compile Include="DAL\DLDEPENDENCIAList.cs" />
+    <Compile Include="DAL\DLEMPRESA.cs" />
+    <Compile Include="DAL\DLEMPRESALIST.cs" />
+    <Compile Include="DAL\DLENCUESTA_SATIS_USUARIOList.cs" />
+    <Compile Include="DAL\DLENCUESTA_SATIS_USUARIO.cs" />
+    <Compile Include="DAL\DLENCUESTA.cs" />
+    <Compile Include="DAL\DLENCUESTAList.cs" />
+    <Compile Include="DAL\DLESCALA_NOTAS.cs" />
+    <Compile Include="DAL\DLESCALA_NOTASList.cs" />
+    <Compile Include="DAL\DLESTADO_ACTIVIDAD.cs" />
+    <Compile Include="DAL\DLESTADO_ACTIVIDADList.cs" />
+    <Compile Include="DAL\DLETIQUETA.cs" />
+    <Compile Include="DAL\DLETIQUETAList.cs" />
+    <Compile Include="DAL\DLETIQUETA_IDIOMA.cs" />
+    <Compile Include="DAL\DLETIQUETA_IDIOMAList.cs" />
+    <Compile Include="DAL\DLEVALUACION.cs" />
+    <Compile Include="DAL\DLEVALUACIONList.cs" />
+    <Compile Include="DAL\DLFORO.cs" />
+    <Compile Include="DAL\DLFOROList.cs" />
+    <Compile Include="DAL\DLGCATALOGO_USUARIOList.cs" />
+    <Compile Include="DAL\DLGenericBaseList.cs" />
+    <Compile Include="DAL\DLIDIOMA.cs" />
+    <Compile Include="DAL\DLIDIOMAList.cs" />
+    <Compile Include="DAL\DLLINK_EXTERNO.cs" />
+    <Compile Include="DAL\DLLINK_EXTERNOList.cs" />
+    <Compile Include="DAL\DLLOG_CONEXION.cs" />
+    <Compile Include="DAL\DLLOG_CONEXIONList.cs" />
+    <Compile Include="DAL\DLMALLA.cs" />
+    <Compile Include="DAL\DLMALLAList.cs" />
+    <Compile Include="DAL\DLMALLA_ACT_USUARIO.cs" />
+    <Compile Include="DAL\DLMALLA_ACT_USUARIOList.cs" />
+    <Compile Include="DAL\DLMALLA_USUARIO.cs" />
+    <Compile Include="DAL\DLMALLA_USUARIOList.cs" />
+    <Compile Include="DAL\DLMARCA_DISPOSITIVO.cs" />
+    <Compile Include="DAL\DLMARCA_DISPOSITIVOList.cs" />
+    <Compile Include="DAL\DLMATERIAL_APOYO.cs" />
+    <Compile Include="DAL\DLMATERIAL_APOYOList.cs" />
+    <Compile Include="DAL\DLMATERIAL_APOYO_TUTOR.cs" />
+    <Compile Include="DAL\DLMATERIAL_APOYO_TUTORList.cs" />
+    <Compile Include="DAL\DLMENSAJE.cs" />
+    <Compile Include="DAL\DLMENSAJEList.cs" />
+    <Compile Include="DAL\DLMODELO_DISPOSITIVO.cs" />
+    <Compile Include="DAL\DLMODELO_DISPOSITIVOList.cs" />
+    <Compile Include="DAL\DLMODULO.cs" />
+    <Compile Include="DAL\DLMODULOList.cs" />
+    <Compile Include="DAL\DLMODULO_PAGINA.cs" />
+    <Compile Include="DAL\DLMODULO_PAGINAList.cs" />
+    <Compile Include="DAL\DLMOTIVO_CORREO.cs" />
+    <Compile Include="DAL\DLMOTIVO_CORREOList.cs" />
+    <Compile Include="DAL\DLMOVIMIENTO_CARTOLA.cs" />
+    <Compile Include="DAL\DLMOVIMIENTO_CARTOLAList.cs" />
+    <Compile Include="DAL\DLNOTIFICACION_CORREO.cs" />
+    <Compile Include="DAL\DLNOTIFICACION_CORREOList.cs" />
+    <Compile Include="DAL\DLOBJETO.cs" />
+    <Compile Include="DAL\DLOBJETOList.cs" />
+    <Compile Include="DAL\DLPAGINA.cs" />
+    <Compile Include="DAL\DLPAGINAList.cs" />
+    <Compile Include="DAL\DLPAGINA_TRADUCCION.cs" />
+    <Compile Include="DAL\DLPAGINA_TRADUCCIONList.cs" />
+    <Compile Include="DAL\DLParam_Gen.cs" />
+    <Compile Include="DAL\DLParam_GenList.cs" />
+    <Compile Include="DAL\DLPERFIL.cs" />
+    <Compile Include="DAL\DLPERFILList.cs" />
+    <Compile Include="DAL\DLPERFIL_OBJETO.cs" />
+    <Compile Include="DAL\DLPERFIL_OBJETOList.cs" />
+    <Compile Include="DAL\DLPERFIL_USUARIO.cs" />
+    <Compile Include="DAL\DLPERFIL_USUARIOList.cs" />
+    <Compile Include="DAL\DLPLANTILLA.cs" />
+    <Compile Include="DAL\DLPLANTILLAList.cs" />
+    <Compile Include="DAL\DLPREGUNTA.cs" />
+    <Compile Include="DAL\DLPREGUNTAList.cs" />
+    <Compile Include="DAL\DLPREGUNTA_FRECUENTE.cs" />
+    <Compile Include="DAL\DLPREGUNTA_FRECUENTEList.cs" />
+    <Compile Include="DAL\DLPREGUNTA_ENCUESTA_SATIS.cs" />
+    <Compile Include="DAL\DLPREGUNTA_UNIDAD.cs" />
+    <Compile Include="DAL\DLPREGUNTA_ENCUESTA_SATISLists.cs" />
+    <Compile Include="DAL\DLPREGUNTA_UNIDADList.cs" />
+    <Compile Include="DAL\DLPRODUCTO.cs" />
+    <Compile Include="DAL\DLPRODUCTOList.cs" />
+    <Compile Include="DAL\DLPRODUCTO_CANJEADO.cs" />
+    <Compile Include="DAL\DLPRODUCTO_CANJEADOList.cs" />
+    <Compile Include="DAL\DLPRODUCTO_TIENDA.cs" />
+    <Compile Include="DAL\DLPRODUCTO_TIENDAList.cs" />
+    <Compile Include="DAL\DLPROVEEDOR.cs" />
+    <Compile Include="DAL\DLPROVEEDORList.cs" />
+    <Compile Include="DAL\DLREPORTES.cs" />
+    <Compile Include="DAL\DLRESULTADOS_UAMS.cs" />
+    <Compile Include="DAL\DLRESULTADOS_UAMSList.cs" />
+    <Compile Include="DAL\DLSALA_VIRTUAL.cs" />
+    <Compile Include="DAL\DLSALA_VIRTUALList.cs" />
+    <Compile Include="DAL\DLSESION.cs" />
+    <Compile Include="DAL\DLSESIONList.cs" />
+    <Compile Include="DAL\DLSESSIONUSUARIO.cs" />
+    <Compile Include="DAL\DLSOLICITUD_CURSO.cs" />
+    <Compile Include="DAL\DLSOLICITUD_CURSOList.cs" />
+    <Compile Include="DAL\DLSOLICITUD_CURSO_CATALOGO.cs" />
+    <Compile Include="DAL\DLSOLICITUD_CURSO_CATALOGOList.cs" />
+    <Compile Include="DAL\DLSUB_MOTIVO_CORREO.cs" />
+    <Compile Include="DAL\DLSUB_MOTIVO_CORREOList.cs" />
+    <Compile Include="DAL\DLTEMA_UNIDAD.cs" />
+    <Compile Include="DAL\DLTEMA_UNIDADList.cs" />
+    <Compile Include="DAL\DLTIENDA.cs" />
+    <Compile Include="DAL\DLTIENDAList.cs" />
+    <Compile Include="DAL\DLTIPONOTIFICACION.cs" />
+    <Compile Include="DAL\DLTIPONOTIFICACIONList.cs" />
+    <Compile Include="DAL\DLTIPO_ACTIVIDAD.cs" />
+    <Compile Include="DAL\DLTIPO_ACTIVIDADList.cs" />
+    <Compile Include="DAL\DLTIPO_BITACORA_REPOSITORIO.cs" />
+    <Compile Include="DAL\DLTIPO_BITACORA_REPOSITORIOList.cs" />
+    <Compile Include="DAL\DLTIPO_CURSO.cs" />
+    <Compile Include="DAL\DLTIPO_CURSOList.cs" />
+    <Compile Include="DAL\DLTIPO_MOVIMIENTO.cs" />
+    <Compile Include="DAL\DLTIPO_MOVIMIENTOList.cs" />
+    <Compile Include="DAL\DLTIPO_PREGUNTA.cs" />
+    <Compile Include="DAL\DLTIPO_PREGUNTAList.cs" />
+    <Compile Include="DAL\DLTIPO_SALA_VIRTUAL.cs" />
+    <Compile Include="DAL\DLTIPO_SALA_VIRTUALList.cs" />
+    <Compile Include="DAL\DLTIPO_UNIDAD.cs" />
+    <Compile Include="DAL\DLTIPO_UNIDADList.cs" />
+    <Compile Include="DAL\DLTUTOR.cs" />
+    <Compile Include="DAL\DLTUTORList.cs" />
+    <Compile Include="DAL\DLENCUESTA_SATISFACCION.cs" />
+    <Compile Include="DAL\DLUNIDAD.cs" />
+    <Compile Include="DAL\DLENCUESTA_SATISFACCIONList.cs" />
+    <Compile Include="DAL\DLUNIDADList.cs" />
+    <Compile Include="DAL\DLUNIDAD_FORO.cs" />
+    <Compile Include="DAL\DLUNIDAD_FOROList.cs" />
+    <Compile Include="DAL\DLUSER_AGENT.cs" />
+    <Compile Include="DAL\DLUSER_AGENTList.cs" />
+    <Compile Include="DAL\DLUSUARIO.cs" />
+    <Compile Include="DAL\DLUSUARIOList.cs" />
+    <Compile Include="DAL\DLVARIABLES_GLOBALES.cs" />
+    <Compile Include="DAL\DLVARIABLES_GLOBALESList.cs" />
+    <Compile Include="DAL\MapperRegistry.cs" />
+    <Compile Include="DAO\EBITACORA_CORREO.cs" />
+    <Compile Include="DAO\DomainObject.cs" />
+    <Compile Include="DAO\EACCION_BITACORA.cs" />
+    <Compile Include="DAO\EACTIVIDAD_CAPAC.cs" />
+    <Compile Include="DAO\EACTIVIDAD_FORO.cs" />
+    <Compile Include="DAO\EACTIVIDAD_MALLA.cs" />
+    <Compile Include="DAO\EACTIVIDAD_TUTOR.cs" />
+    <Compile Include="DAO\EACTIVIDAD_UNIDAD.cs" />
+    <Compile Include="DAO\EACTIVIDAD_USUARIO.cs" />
+    <Compile Include="DAO\EALTERNATIVA.cs" />
+    <Compile Include="DAO\EASIGNA_MOVIMIENTO.cs" />
+    <Compile Include="DAO\EATRIBUTO.cs" />
+    <Compile Include="DAO\EATRIBUTO_USUARIO.cs" />
+    <Compile Include="DAO\EAVISOS_HOME.cs" />
+    <Compile Include="DAO\EBITACORA_ACTIVIDAD_USUARIO.cs" />
+    <Compile Include="DAO\EBITACORA_ADMINISTRACION.cs" />
+    <Compile Include="DAO\EBITACORA_NAVEGACION.cs" />
+    <Compile Include="DAO\EBITACORA_REPOSITORIO.cs" />
+    <Compile Include="DAO\ECAMPO.cs" />
+    <Compile Include="DAO\ECAMPO_PLANTILLA.cs" />
+    <Compile Include="DAO\ECARACTERISTICA.cs" />
+    <Compile Include="DAO\ECATALOGO.cs" />
+    <Compile Include="DAO\ECATALOGO_ACTIVIDAD.cs" />
+    <Compile Include="DAO\ECATALOGO_USUARIO.cs" />
+    <Compile Include="DAO\ECATEGORIA_ACTIVIDAD.cs" />
+    <Compile Include="DAO\ECATEGORIA_PRODUCTO.cs" />
+    <Compile Include="DAO\ECOMENTARIO.cs" />
+    <Compile Include="DAO\ECOMENTARIO_TUTOR.cs" />
+    <Compile Include="DAO\ECURSO.cs" />
+    <Compile Include="DAO\ECURSO_ACTIVIDAD.cs" />
+    <Compile Include="DAO\ECURSO_MALLA.cs" />
+    <Compile Include="DAO\EDECLARACION_JURADA.cs" />
+    <Compile Include="DAO\EDEPENDENCIA.cs" />
+    <Compile Include="DAO\EEMPRESA.cs" />
+    <Compile Include="DAO\EENCUESTA_SATIS_USUARIO.cs" />
+    <Compile Include="DAO\EENCUESTA.cs" />
+    <Compile Include="DAO\EESCALA_NOTAS.cs" />
+    <Compile Include="DAO\EESTADO_ACTIVIDAD.cs" />
+    <Compile Include="DAO\EETIQUETA.cs" />
+    <Compile Include="DAO\EETIQUETA_IDIOMA.cs" />
+    <Compile Include="DAO\EEVALUACION.cs" />
+    <Compile Include="DAO\EFORO.cs" />
+    <Compile Include="DAO\EIDIOMA.cs" />
+    <Compile Include="DAO\ELINK_EXTERNO.cs" />
+    <Compile Include="DAO\ELOG_CONEXION.cs" />
+    <Compile Include="DAO\EMALLA.cs" />
+    <Compile Include="DAO\EMALLA_ACT_USUARIO.cs" />
+    <Compile Include="DAO\EMALLA_USUARIO.cs" />
+    <Compile Include="DAO\EMARCA_DISPOSITIVO.cs" />
+    <Compile Include="DAO\EMATERIAL_APOYO.cs" />
+    <Compile Include="DAO\EMATERIAL_APOYO_TUTOR.cs" />
+    <Compile Include="DAO\EMENSAJE.cs" />
+    <Compile Include="DAO\EMODELO_DISPOSITIVO.cs" />
+    <Compile Include="DAO\EMODULO.cs" />
+    <Compile Include="DAO\EMODULO_PAGINA.cs" />
+    <Compile Include="DAO\EMOTIVO_CORREO.cs" />
+    <Compile Include="DAO\EMOVIMIENTO_CARTOLA.cs" />
+    <Compile Include="DAO\ENOTIFICACION_CORREO.cs" />
+    <Compile Include="DAO\EOBJETO.cs" />
+    <Compile Include="DAO\EPAGINA.cs" />
+    <Compile Include="DAO\EPAGINA_TRADUCCION.cs" />
+    <Compile Include="DAO\EParam_Gen.cs" />
+    <Compile Include="DAO\EPERFIL.cs" />
+    <Compile Include="DAO\EPERFIL_OBJETO.cs" />
+    <Compile Include="DAO\EPERFIL_USUARIO.cs" />
+    <Compile Include="DAO\EPLANTILLA.cs" />
+    <Compile Include="DAO\EPREGUNTA.cs" />
+    <Compile Include="DAO\EPREGUNTA_FRECUENTE.cs" />
+    <Compile Include="DAO\EPREGUNTA_ENCUESTA_SATIS.cs" />
+    <Compile Include="DAO\EPREGUNTA_UNIDAD.cs" />
+    <Compile Include="DAO\EPRODUCTO.cs" />
+    <Compile Include="DAO\EPRODUCTO_CANJEADO.cs" />
+    <Compile Include="DAO\EPRODUCTO_TIENDA.cs" />
+    <Compile Include="DAO\EPROVEEDOR.cs" />
+    <Compile Include="DAO\ERESULTADOS_UAMS.cs" />
+    <Compile Include="DAO\ESALA_VIRTUAL.cs" />
+    <Compile Include="DAO\ESESION.cs" />
+    <Compile Include="DAO\ESESSION_USUARIO.cs" />
+    <Compile Include="DAO\ESOLICITUD_CURSO.cs" />
+    <Compile Include="DAO\ESOLICITUD_CURSO_CATALOGO.cs" />
+    <Compile Include="DAO\ESUB_MOTIVO_CORREO.cs" />
+    <Compile Include="DAO\ETEMA_UNIDAD.cs" />
+    <Compile Include="DAO\ETIENDA.cs" />
+    <Compile Include="DAO\ETIPOCURSO.cs" />
+    <Compile Include="DAO\ETIPONOTIFICACION.cs" />
+    <Compile Include="DAO\ETIPO_ACTIVIDAD.cs" />
+    <Compile Include="DAO\ETIPO_BITACORA_REPOSITORIO.cs" />
+    <Compile Include="DAO\ETIPO_MOVIMIENTO.cs" />
+    <Compile Include="DAO\ETIPO_PREGUNTA.cs" />
+    <Compile Include="DAO\ETIPO_SALA_VIRTUAL.cs" />
+    <Compile Include="DAO\ETIPO_UNIDAD.cs" />
+    <Compile Include="DAO\ETUTOR.cs" />
+    <Compile Include="DAO\EENCUESTA_SATISFACCION.cs" />
+    <Compile Include="DAO\EUNIDAD.cs" />
+    <Compile Include="DAO\EUNIDAD_FORO.cs" />
+    <Compile Include="DAO\EUSER_AGENT.cs" />
+    <Compile Include="DAO\EUSUARIO.cs" />
+    <Compile Include="DAO\EVARIABLES_GLOBALES.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ATENEUS.COMMON\ATENEUS.COMMON.csproj">
+      <Project>{575d03f5-ce09-4581-9bda-6ae14ca00392}</Project>
+      <Name>ATENEUS.COMMON</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ATENEUS.DATAACCESS\ATENEUS.DATAACCESS.csproj">
+      <Project>{13820f52-3634-4348-8125-26a988d506d9}</Project>
+      <Name>ATENEUS.DATAACCESS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

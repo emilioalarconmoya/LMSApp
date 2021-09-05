@@ -12,6 +12,7 @@ using System.Web.Http.Description;
 using LMSApp.Common.Models;
 using LMSApp.Domain.Models;
 using System.Data.SqlClient;
+using ATENEUS.CLASES.DAL;
 
 namespace LMSApp.API.Controllers
 {
@@ -23,8 +24,63 @@ namespace LMSApp.API.Controllers
         public IQueryable<Usuario> GetUsuarios()
         {
             //return db.Usuarios;
-            return db.Database.SqlQuery<Usuario>("exec proc_select_USUARIO_all_app @cod_empresa", new SqlParameter("@cod_empresa", 1)).AsQueryable();
+            //return db.Database.SqlQuery<Usuario>("exec proc_select_USUARIO_all_app @cod_empresa", new SqlParameter("@cod_empresa", 1)).AsQueryable();
+            DLUSUARIOList dLUSUARIO = new DLUSUARIOList();
+            DataTable dataTable = dLUSUARIO.GetUsuariosApp(1);
+
+            var importdata = from row in dataTable.AsEnumerable()
+                             select new Usuario()
+                             {
+                                RutUsuario = row.Field<int>("RutUsuario"),
+                                CodEmpresa = row.Field<int>("CodEmpresa"),
+                                Nombres = row.Field<string>("Nombres"),
+                                Apellidos = row.Field<string>("Apellidos"),
+                                Password = row.Field<string>("Password"),
+                                Email = row.Field<string>("Email"),
+                                FechaCaducidad = row.Field<DateTime>("FechaCaducidad"),
+                                FechaCreacion = row.Field<DateTime>("FechaCreacion"),
+                                Bloqueado = row.Field<bool>("Bloqueado"),
+                                ClaveSence = row.Field<string>("ClaveSence"),
+                                Profesion = row.Field<string>("Profesion"),
+                                Direccion = row.Field<string>("Direccion"),
+                                Comuna = row.Field<string>("Comuna"),
+                                Dni = row.Field<string>("Dni"),
+                                Fono = row.Field<string>("Fono"),
+
+
+                             } ;
+
+            return importdata.AsQueryable();
+
+            //return data;
+
+            //var importdata = from x in dataTable.AsEnumerable()select new Usuario()
+            //{
+            //    RutUsuario = x.Field<int>("RutUsuario"),
+            //    CodEmpresa = x.Field<int>("CodEmpresa"),
+            //    Nombres = x.Field<string>("Nombres"),
+            //    Apellidos = x.Field<string>("Apellidos"),
+            //    Password = x.Field<string>("Password"),
+            //    Email = x.Field<string>("Email"),
+            //    FechaCaducidad = x.Field<DateTime>("FechaCaducidad"),
+            //    FechaCreacion = x.Field<DateTime>("FechaCreacion"),
+            //    Bloqueado = x.Field<bool>("Bloqueado"),
+            //    ClaveSence = x.Field<string>("ClaveSence"),
+            //    Profesion = x.Field<string>("Profesion"),
+            //    Direccion = x.Field<string>("Direccion"),
+            //    Comuna = x.Field<string>("Comuna"),
+            //    Dni = x.Field<string>("Dni"),
+            //    Fono = x.Field<string>("Fono"),
+
+
+            //};
+
+            //return importdata as IQueryable<Usuario>;
+
+
         }
+
+       
 
         // GET: api/Usuarios/5
         [ResponseType(typeof(Usuario))]
@@ -48,7 +104,7 @@ namespace LMSApp.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != usuario.UsuarioId)
+            if (id != usuario.RutUsuario)
             {
                 return BadRequest();
             }
@@ -86,7 +142,7 @@ namespace LMSApp.API.Controllers
             db.Usuarios.Add(usuario);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = usuario.UsuarioId }, usuario);
+            return CreatedAtRoute("DefaultApi", new { id = usuario.RutUsuario }, usuario);
         }
 
         // DELETE: api/Usuarios/5
@@ -116,7 +172,7 @@ namespace LMSApp.API.Controllers
 
         private bool UsuarioExists(int id)
         {
-            return db.Usuarios.Count(e => e.UsuarioId == id) > 0;
+            return db.Usuarios.Count(e => e.RutUsuario == id) > 0;
         }
     }
 }

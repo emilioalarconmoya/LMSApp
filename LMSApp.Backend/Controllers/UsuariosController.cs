@@ -10,6 +10,9 @@ using System.Web.Mvc;
 using LMSApp.Backend.Models;
 using LMSApp.Common.Models;
 using System.Data.SqlClient;
+using ATENEUS.CLASES.DAL;
+
+
 
 namespace LMSApp.Backend.Controllers
 {
@@ -20,10 +23,34 @@ namespace LMSApp.Backend.Controllers
         // GET: Usuarios
         public async Task<ActionResult> Index()
         {
-
             //return View(await db.Usuarios.ToListAsync());
-            return View(await db.Database.SqlQuery<Usuario>("exec proc_select_USUARIO_all_app @cod_empresa", new SqlParameter("@cod_empresa", 1)).ToListAsync());
-            
+            DLUSUARIOList dLUSUARIO = new DLUSUARIOList();
+            DataTable dataTable = dLUSUARIO.GetUsuariosApp(1);
+
+
+            return View(dataTable.AsEnumerable().Select(x => new Usuario
+            {
+                RutUsuario = x.Field<int>("RutUsuario"),
+                CodEmpresa = x.Field<int>("CodEmpresa"),
+                Nombres = x.Field<string>("Nombres"),
+                Apellidos = x.Field<string>("Apellidos"),
+                Password = x.Field<string>("Password"),
+                Email = x.Field<string>("Email"),
+                FechaCaducidad = x.Field<DateTime>("FechaCaducidad"),
+                FechaCreacion = x.Field<DateTime>("FechaCreacion"),
+                Bloqueado = x.Field<bool>("Bloqueado"),
+                ClaveSence = x.Field<string>("ClaveSence"),
+                Profesion = x.Field<string>("Profesion"),
+                Direccion = x.Field<string>("Direccion"),
+                Comuna = x.Field<string>("Comuna"),
+                Dni = x.Field<string>("Dni"),
+                Fono = x.Field<string>("Fono"),
+
+
+            }));
+            //return View(await db.Usuarios.ToListAsync());
+            //return View(await db.Database.SqlQuery<Usuario>("exec proc_select_USUARIO_all_app @cod_empresa", new SqlParameter("@cod_empresa", 1)).ToListAsync());
+
 
         }
 

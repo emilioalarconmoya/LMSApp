@@ -309,6 +309,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ATENEUS.CLASES\ATENEUS.CLASES.csproj">
+      <Project>{263574B1-8E7B-42F7-AFAF-1FE1139B2356}</Project>
+      <Name>ATENEUS.CLASES</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LMSApp.Common\LMSApp.Common.csproj">
       <Project>{2308e547-988b-4840-bc13-38ed1f6501fe}</Project>
       <Name>LMSApp.Common</Name>

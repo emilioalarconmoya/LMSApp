@@ -8,8 +8,6 @@ namespace LMSApp.Common.Models
     {
 
         [Key]
-        public int UsuarioId { get; set; }
-        [Required]
         public int RutUsuario { get; set; }
        
         public int CodEmpresa { get; set; }

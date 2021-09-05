@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{83105B95-459F-48B7-8DA4-AE3C2F64CDBE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ATENEUS.BUSINESS</RootNamespace>
+    <AssemblyName>ATENEUS.BUSINESS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BFACCION_BITACORA.cs" />
+    <Compile Include="BFACTIVIDAD_CAPAC.cs" />
+    <Compile Include="BFACTIVIDAD_FORO.cs" />
+    <Compile Include="BFACTIVIDAD_MALLA.cs" />
+    <Compile Include="BFACTIVIDAD_TUTOR.cs" />
+    <Compile Include="BFACTIVIDAD_UNIDAD.cs" />
+    <Compile Include="BFACTIVIDAD_USUARIO.cs" />
+    <Compile Include="BFALTERNATIVA.cs" />
+    <Compile Include="BFASIGNA_MOVIMIENTO.cs" />
+    <Compile Include="BFATRIBUTO.cs" />
+    <Compile Include="BFATRIBUTO_USUARIO.cs" />
+    <Compile Include="BFAVISOS_HOME.cs" />
+    <Compile Include="BFBITACORA_ACTIVIDAD_USUARIO.cs" />
+    <Compile Include="BFBITACORA_ADMINISTRACION.cs" />
+    <Compile Include="BFBITACORA_CORREO.cs" />
+    <Compile Include="BFBITACORA_NAVEGACION.cs" />
+    <Compile Include="BFBITACORA_REPOSITORIO.cs" />
+    <Compile Include="BFCAMPO.cs" />
+    <Compile Include="BFCAMPO_PLANTILLA.cs" />
+    <Compile Include="BFCARACTERISTICA.cs" />
+    <Compile Include="BFCATALOGO.cs" />
+    <Compile Include="BFCATALOGO_ACTIVIDAD.cs" />
+    <Compile Include="BFCATALOGO_USUARIO.cs" />
+    <Compile Include="BFCATEGORIA_ACTIVIDAD.cs" />
+    <Compile Include="BFCATEGORIA_PRODUCTO.cs" />
+    <Compile Include="BFCOMENTARIO.cs" />
+    <Compile Include="BFCOMENTARIO_TUTOR.cs" />
+    <Compile Include="BFCURSO.cs" />
+    <Compile Include="BFCURSO_ACTIVIDAD.cs" />
+    <Compile Include="BFCURSO_MALLA.cs" />
+    <Compile Include="BFDECLARACION_JURADA.cs" />
+    <Compile Include="BFDEPENDENCIA.cs" />
+    <Compile Include="BFEMPRESA.cs" />
+    <Compile Include="BFENCUESTA_SATIS_USUARIO.cs" />
+    <Compile Include="BFENCUESTA.cs" />
+    <Compile Include="BFESCALA_NOTAS.cs" />
+    <Compile Include="BFESTADO_ACTIVIDAD.cs" />
+    <Compile Include="BFETIQUETA.cs" />
+    <Compile Include="BFETIQUETA_IDIOMA.cs" />
+    <Compile Include="BFEVALUACION.cs" />
+    <Compile Include="BFFORO.cs" />
+    <Compile Include="BFIDIOMA.cs" />
+    <Compile Include="BFLINK_EXTERNO.cs" />
+    <Compile Include="BFLOG_CONEXION.cs" />
+    <Compile Include="BFMALLA.cs" />
+    <Compile Include="BFMALLA_ACT_USUARIO.cs" />
+    <Compile Include="BFMALLA_USUARIO.cs" />
+    <Compile Include="BFMARCA_DISPOSITIVO.cs" />
+    <Compile Include="BFMATERIAL_APOYO.cs" />
+    <Compile Include="BFMATERIAL_APOYO_TUTOR.cs" />
+    <Compile Include="BFMENSAJE.cs" />
+    <Compile Include="BFMODELO_DISPOSITIVO.cs" />
+    <Compile Include="BFMODULO.cs" />
+    <Compile Include="BFMODULO_PAGINA.cs" />
+    <Compile Include="BFMOTIVO_CORREO.cs" />
+    <Compile Include="BFMOVIMIENTO_CARTOLA.cs" />
+    <Compile Include="BFNOTIFICACION_CORREO.cs" />
+    <Compile Include="BFOBJETO.cs" />
+    <Compile Include="BFPAGINA.cs" />
+    <Compile Include="BFPAGINA_TRADUCCION.cs" />
+    <Compile Include="BFParam_Gen.cs" />
+    <Compile Include="BFPERFIL.cs" />
+    <Compile Include="BFPERFIL_OBJETO.cs" />
+    <Compile Include="BFPERFIL_USUARIO.cs" />
+    <Compile Include="BFPLANTILLA.cs" />
+    <Compile Include="BFPREGUNTA.cs" />
+    <Compile Include="BFPREGUNTA_FRECUENTE.cs" />
+    <Compile Include="BFPREGUNTA_ENCUESTA_SATIS.cs" />
+    <Compile Include="BFPREGUNTA_UNIDAD.cs" />
+    <Compile Include="BFPRODUCTO.cs" />
+    <Compile Include="BFPRODUCTO_CANJEADO.cs" />
+    <Compile Include="BFPRODUCTO_TIENDA.cs" />
+    <Compile Include="BFPROVEEDOR.cs" />
+    <Compile Include="BFREPORTES.cs" />
+    <Compile Include="BFRESULTADOS_UAMS.cs" />
+    <Compile Include="BFSALA_VIRTUAL.cs" />
+    <Compile Include="BFSESION.cs" />
+    <Compile Include="BFSESSIONUSUARIO.cs" />
+    <Compile Include="BFSOLICITUD_CURSO.cs" />
+    <Compile Include="BFSOLICITUD_CURSO_CATALOGO.cs" />
+    <Compile Include="BFSUB_MOTIVO_CORREO.cs" />
+    <Compile Include="BFTEMA_UNIDAD.cs" />
+    <Compile Include="BFTIENDA.cs" />
+    <Compile Include="BFTIPONOTIFICACION.cs" />
+    <Compile Include="BFTIPO_ACTIVIDAD.cs" />
+    <Compile Include="BFTIPO_BITACORA_REPOSITORIO.cs" />
+    <Compile Include="BFTIPO_CURSO.cs" />
+    <Compile Include="BFTIPO_MOVIMIENTO.cs" />
+    <Compile Include="BFTIPO_PREGUNTA.cs" />
+    <Compile Include="BFTIPO_SALA_VIRTUAL.cs" />
+    <Compile Include="BFTIPO_UNIDAD.cs" />
+    <Compile Include="BFTUTOR.cs" />
+    <Compile Include="BFENCUESTA_SATISFACCION.cs" />
+    <Compile Include="BFUNIDAD.cs" />
+    <Compile Include="BFUNIDAD_FORO.cs" />
+    <Compile Include="BFUSER_AGENT.cs" />
+    <Compile Include="BFUSUARIO.cs" />
+    <Compile Include="BFVARIABLES_GLOBALES.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ATENEUS.CLASES\ATENEUS.CLASES.csproj">
+      <Project>{263574b1-8e7b-42f7-afaf-1fe1139b2356}</Project>
+      <Name>ATENEUS.CLASES</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ATENEUS.COMMON\ATENEUS.COMMON.csproj">
+      <Project>{575d03f5-ce09-4581-9bda-6ae14ca00392}</Project>
+      <Name>ATENEUS.COMMON</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
