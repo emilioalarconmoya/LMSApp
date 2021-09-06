@@ -1,70 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LMSApp.View.LoginPage">
+             x:Class="LMSApp.View.LoginPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">   <!--StaticResource es el diccionario de recursos-->
     <ContentPage.Content>
-        <StackLayout
-            Padding="10,20,10,5">
-            <Image
-                HeightRequest="150"
-                Source="logo.png">
-            </Image>
-            <Picker
-                Title="Ingreso con RUT"
-                x:Name="ModoIngreso">
-                <Picker.Items>
-                    <x:String>Ingreso con RUT</x:String>
-                    <x:String>Ingreso con DNI</x:String>
-                    <x:String>Ingreso con Email</x:String>
-                </Picker.Items>
-            </Picker>
-            <Label
-                Text="Usuario">
-            </Label>
-            <Frame
-                BorderColor="Black"
-                HeightRequest="40">
-                <Entry
-                    Placeholder="Ingrese su nombre usuario"
-                    x:Name="Usuario">
-                </Entry>
-            </Frame>
-            
-            <Label
-                Text="Contraseña">
-            </Label>
-            <Frame
-                BorderColor="Black"
-                HeightRequest="40">
-                <Entry
-                    IsPassword="True"
-                    Placeholder="Ingrese su contraseña"
-                    x:Name="Password">
-                </Entry>
-            </Frame>
+        <ScrollView
+            BindingContext="{Binding Login}">
             <StackLayout
-                Orientation="Horizontal">
+                Padding="10,20,10,5">
+                <Image
+                    HeightRequest="150"
+                    Source="logo.png">
+                </Image>
+                <Picker
+                    Title="Ingreso con RUT"
+                    x:Name="ModoIngreso">
+                    <Picker.Items>
+                        <x:String>Ingreso con RUT</x:String>
+                        <x:String>Ingreso con DNI</x:String>
+                        <x:String>Ingreso con Email</x:String>
+                    </Picker.Items>
+                </Picker>
                 <Label
-                    HorizontalOptions="StartAndExpand"
-                    FontSize="Medium"
-                    Text="Recordarme en este dispositivo"
-                    VerticalOptions="Center">
+                    Text="Usuario">
                 </Label>
-                <Switch
-                    HorizontalOptions="End">
-                    
-                </Switch>
+                <Frame
+                    BorderColor="Black"
+                    HeightRequest="40">
+                    <Entry
+                        Placeholder="Ingrese su nombre usuario"
+                        Text="{Binding Usuario, Mode=TwoWay}"
+                        x:Name="Usuario">
+                    </Entry>
+                </Frame>
+                <Label
+                    Text="Contraseña">
+                </Label>
+                <Frame
+                    BorderColor="Black"
+                    HeightRequest="40">
+                    <Entry
+                        IsPassword="True"
+                        Placeholder="Ingrese su contraseña"
+                        Text="{Binding Password, Mode=TwoWay}"
+                        x:Name="Password">
+                    </Entry>
+                </Frame>
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        FontSize="Medium"
+                        Text="Recordarme en este dispositivo"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Switch
+                        HorizontalOptions="End"
+                        IsToggled="{Binding IsRemenbered, Mode=TwoWay}">
+                    </Switch>
+                </StackLayout>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunnig, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand">
+
+                </ActivityIndicator>
+                <Button
+                    BackgroundColor="Navy"
+                    BorderRadius="23"
+                    Command="{Binding LoginCommand}"
+                    IsEnabled="{Binding IsEnable,Mode=TwoWay}"
+                    TextColor="White"
+                    Text="Ingresar">
+                </Button>
             </StackLayout>
-            <ActivityIndicator>
-                
-            </ActivityIndicator>
-            <Button
-                BackgroundColor="Navy"
-                BorderRadius="23"
-                TextColor="White"
-                Text="Ingresar">
-                
-            </Button>
-        </StackLayout>
+        </ScrollView>
+
     </ContentPage.Content>
 </ContentPage>

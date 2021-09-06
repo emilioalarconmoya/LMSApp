@@ -2,11 +2,12 @@
 {
     public class MainViewModel
     {
+        public LoginViewModel Login { get; set; }
         public ActividadVigentesViewModel ActividadVigentes { get; set; }
 
         public MainViewModel()
         {
-            this.ActividadVigentes = new ActividadVigentesViewModel();
+            this.Login = new LoginViewModel();
         }
     }
 }
