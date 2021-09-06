@@ -2,30 +2,67 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LMSApp.View.ActividadVigentesPage"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Actividades Vigentes">
     <ContentPage.Content>
         <StackLayout
-            BindingContext="{Binding ActividadVigentes}">
+            BindingContext="{Binding ActividadVigentes}"
+            Padding="10">
             <ListView
-                ItemsSource="{Binding ActividadVigentes}">
+                HasUnevenRows="True"
+                ItemsSource="{Binding ActividadVigentes}"
+                IsRefreshing="{Binding IsRefreshing}"
+                IsPullToRefreshEnabled="True"
+                RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label
-                                    FontAttributes="Bold"
-                                    Grid.Column="0"
-                                    Text="{Binding Nombre}">
-                                </Label>
-                                <Label
-                                    FontAttributes="Bold"
-                                    Grid.Column="1"
-                                    Text="{Binding Estado}">
-                                </Label>
+                                <Image Source="curso_generico.jpg"
+                                       VerticalOptions="FillAndExpand"
+                                       HorizontalOptions="FillAndExpand"
+                                       Grid.Column="0"
+                                       HeightRequest="50">
+                                      
+                                </Image>
+                                <StackLayout
+                                    Grid.Column="1">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        Text="{Binding Nombre}">
+                                    </Label>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            
+                                            Text="{Binding FechaInicio}">
+                                        </Label>
+                                        <Label
+                                            Text="al">
+                                        </Label>
+                                        <Label
+                                            
+                                            Text="{Binding FechaFin}">
+                                        </Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            Text="{Binding Estado}">
+                                        </Label>
+                                        <Label
+                                            Text="Nota:"></Label>
+                                        <Label
+                                            Text="{Binding NotaFinal}">
+                                        </Label>
+                                    </StackLayout>
+                                    <ProgressBar
+                                        Progress="{Binding Asistencia}">
+                                    </ProgressBar>
+                                </StackLayout>
+                                
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

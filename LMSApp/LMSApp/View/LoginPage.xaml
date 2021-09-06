@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LMSApp.View.LoginPage">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="10,20,10,5">
+            <Image
+                HeightRequest="150"
+                Source="logo.png">
+            </Image>
+            <Picker
+                Title="Ingreso con RUT"
+                x:Name="ModoIngreso">
+                <Picker.Items>
+                    <x:String>Ingreso con RUT</x:String>
+                    <x:String>Ingreso con DNI</x:String>
+                    <x:String>Ingreso con Email</x:String>
+                </Picker.Items>
+            </Picker>
+            <Label
+                Text="Usuario">
+            </Label>
+            <Frame
+                BorderColor="Black"
+                HeightRequest="40">
+                <Entry
+                    Placeholder="Ingrese su nombre usuario"
+                    x:Name="Usuario">
+                </Entry>
+            </Frame>
+            
+            <Label
+                Text="Contraseña">
+            </Label>
+            <Frame
+                BorderColor="Black"
+                HeightRequest="40">
+                <Entry
+                    IsPassword="True"
+                    Placeholder="Ingrese su contraseña"
+                    x:Name="Password">
+                </Entry>
+            </Frame>
+            <StackLayout
+                Orientation="Horizontal">
+                <Label
+                    HorizontalOptions="StartAndExpand"
+                    FontSize="Medium"
+                    Text="Recordarme en este dispositivo"
+                    VerticalOptions="Center">
+                </Label>
+                <Switch
+                    HorizontalOptions="End">
+                    
+                </Switch>
+            </StackLayout>
+            <ActivityIndicator>
+                
+            </ActivityIndicator>
+            <Button
+                BackgroundColor="Navy"
+                BorderRadius="23"
+                TextColor="White"
+                Text="Ingresar">
+                
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

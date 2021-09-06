@@ -7,13 +7,18 @@ namespace LMSApp
 {
     public partial class App : Application
     {
+
+        #region Constructores
         public App()
         {
             InitializeComponent();
 
-            MainPage = new ActividadVigentesPage();
+            MainPage = new LoginPage();
         }
 
+        #endregion
+
+        #region Metodos
         protected override void OnStart()
         {
         }
@@ -25,5 +30,8 @@ namespace LMSApp
         protected override void OnResume()
         {
         }
+
+        #endregion
+
     }
 }
