@@ -86,6 +86,33 @@ namespace ATENEUS.CLASES.DAL
             return dt;
         }
 
+        public DataTable SelectActividadesVigentesApp(long RutUsuario, Int16 DiasEspera, Int64 CodEmpresa, Int32 horaZona)
+        {
+            DB db = DatabaseFactory.Instance.GetDatabase();
+            IDbDataParameter[] prms;
+            prms = db.GetArrayParameter(4);
+
+            prms[0] = db.GetParameter();
+            prms[0].Value = RutUsuario;
+            prms[0].ParameterName = "@rut_usuario";
+
+            prms[1] = db.GetParameter();
+            prms[1].Value = DiasEspera;
+            prms[1].ParameterName = "@dias_espera";
+
+            prms[2] = db.GetParameter();
+            prms[2].Value = CodEmpresa;
+            prms[2].ParameterName = "@cod_empresa";
+
+            prms[3] = db.GetParameter();
+            prms[3].Value = horaZona;
+            prms[3].ParameterName = "@hora_zona";
+
+            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_select_actividades_vigentes_app", prms);
+
+            return dt;
+        }
+
         public DataTable SelectActividadesVigentes(long RutUsuario, string Email, Int16 DiasEspera)
         {
             DB db = DatabaseFactory.Instance.GetDatabase();

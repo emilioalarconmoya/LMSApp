@@ -172,14 +172,14 @@ namespace ATENEUS.BUSINESS
 
         public DataTable SubirUnidad(string Archivo, string Path)
         {
-            if(Utiles.Descomprimir(Archivo, Path))
-            {
-                return ArchivosUnidad(Path);
-            }
-            else
-            {
+            //if(Utiles.Descomprimir(Archivo, Path))
+            //{
+            //    return ArchivosUnidad(Path);
+            //}
+            //else
+            //{
                 return new DataTable();
-            }
+            //}
             
         }
         //se sube el archivo de la unidad quw no sea zzip
@@ -191,75 +191,75 @@ namespace ATENEUS.BUSINESS
 
         public Boolean ComprobarArchivo(string Archivo, string Path)
         {
-            if(Utiles.Descomprimir(Archivo, Path))
-            {
-                DataTable dt = ArchivosUnidad(Path);
+            //if(Utiles.Descomprimir(Archivo, Path))
+            //{
+            //    DataTable dt = ArchivosUnidad(Path);
 
-                ////después de descomprimir, busco el archivo imsmanifest.xml
-                string buscar = "Archivo = 'imsmanifest.xml'";
-                DataRow[] datos = dt.Select(buscar);
+            //    ////después de descomprimir, busco el archivo imsmanifest.xml
+            //    string buscar = "Archivo = 'imsmanifest.xml'";
+            //    DataRow[] datos = dt.Select(buscar);
 
-                if (datos.Length > 0) //si existe el archivo lo cargo
-                {
-                    XDocument documento = XDocument.Load(Path + "\\imsmanifest.xml");
+            //    if (datos.Length > 0) //si existe el archivo lo cargo
+            //    {
+            //        XDocument documento = XDocument.Load(Path + "\\imsmanifest.xml");
 
-                    documento.Root.RemoveAttributes(); //elimino los atributos de los nodos que no importan
+            //        documento.Root.RemoveAttributes(); //elimino los atributos de los nodos que no importan
 
-                    //debido a que no se borraba el atributo xmlns, lo paso a un dataset para trabajarlo.
-                    DataSet ds = new DataSet();
-                    ds.ReadXml(Path + "\\imsmanifest.xml");
+            //        //debido a que no se borraba el atributo xmlns, lo paso a un dataset para trabajarlo.
+            //        DataSet ds = new DataSet();
+            //        ds.ReadXml(Path + "\\imsmanifest.xml");
 
-                    // verifico que la versión sea la correcta CAM 1.3
-                    if (ds.Tables["metadata"].Rows[0]["schemaversion"].ToString() == "1.2" || ds.Tables["metadata"].Rows[0]["schemaversion"].ToString() == "CAM 1.3")
-                    {
-                        //si la versión es la misma reemplazo el archvio API.js modificado para que llame a la funcion avisatermino()
-                        if (System.IO.File.Exists(Path + "\\lms\\API.js"))
-                        {
-                            System.IO.File.Delete(Path + "\\lms\\API.js");
-                            System.IO.File.Copy(System.AppDomain.CurrentDomain.BaseDirectory + "\\contenidos\\scorm\\API.js", Path + "\\lms\\API.js");
-                        }
-                        else
-                        {
-                            _detalleError = "Error al cargar el archivo: No existe el archivo API.js.";
-                            documento = null;
-                            return false;
-                        }
+            //        // verifico que la versión sea la correcta CAM 1.3
+            //        if (ds.Tables["metadata"].Rows[0]["schemaversion"].ToString() == "1.2" || ds.Tables["metadata"].Rows[0]["schemaversion"].ToString() == "CAM 1.3")
+            //        {
+            //            //si la versión es la misma reemplazo el archvio API.js modificado para que llame a la funcion avisatermino()
+            //            if (System.IO.File.Exists(Path + "\\lms\\API.js"))
+            //            {
+            //                System.IO.File.Delete(Path + "\\lms\\API.js");
+            //                System.IO.File.Copy(System.AppDomain.CurrentDomain.BaseDirectory + "\\contenidos\\scorm\\API.js", Path + "\\lms\\API.js");
+            //            }
+            //            else
+            //            {
+            //                _detalleError = "Error al cargar el archivo: No existe el archivo API.js.";
+            //                documento = null;
+            //                return false;
+            //            }
 
-                        // HACEMOS LO MISMO PARA EL ARCHIVO SCORMFunctions.js
-                        if (System.IO.File.Exists(Path + "\\lms\\SCORMFunctions.js"))
-                        {
-                            System.IO.File.Delete(Path + "\\lms\\SCORMFunctions.js");
-                            System.IO.File.Copy(System.AppDomain.CurrentDomain.BaseDirectory + "\\contenidos\\scorm\\SCORMFunctions.js", Path + "\\lms\\SCORMFunctions.js");
-                        }
-                        else
-                        {
-                            _detalleError = "Error al cargar el archivo: No existe el archivo SCORMFunctions.js.";
-                            documento = null;
-                            return false;
-                        }
-                    }
-                    else
-                    {
-                        _detalleError = "Error al cargar el archivo: La versión no es compatible (versión requerida: 1.2).";
-                        documento = null;
-                        return false;
-                    }
-                }
-                else
-                {
-                    _detalleError = "Error al cargar el archivo: No existe el archivo imsmanifest.xml";
-                    return false;
-                }
+            //            // HACEMOS LO MISMO PARA EL ARCHIVO SCORMFunctions.js
+            //            if (System.IO.File.Exists(Path + "\\lms\\SCORMFunctions.js"))
+            //            {
+            //                System.IO.File.Delete(Path + "\\lms\\SCORMFunctions.js");
+            //                System.IO.File.Copy(System.AppDomain.CurrentDomain.BaseDirectory + "\\contenidos\\scorm\\SCORMFunctions.js", Path + "\\lms\\SCORMFunctions.js");
+            //            }
+            //            else
+            //            {
+            //                _detalleError = "Error al cargar el archivo: No existe el archivo SCORMFunctions.js.";
+            //                documento = null;
+            //                return false;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            _detalleError = "Error al cargar el archivo: La versión no es compatible (versión requerida: 1.2).";
+            //            documento = null;
+            //            return false;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        _detalleError = "Error al cargar el archivo: No existe el archivo imsmanifest.xml";
+            //        return false;
+            //    }
 
-                return true;
-            }
-            else
-            {
-                _detalleError = "Error al cargar el archivo: Verificar si el archivo no se encuentra dañado.";
-                return false;
-            }
-            
-            
+            //    return true;
+            //}
+            //else
+            //{
+            //    _detalleError = "Error al cargar el archivo: Verificar si el archivo no se encuentra dañado.";
+            //    return false;
+            //}
+
+            return false;
 
             
         }

@@ -1,0 +1,129 @@
+﻿@model IEnumerable<LMSApp.Common.Models.ActividadVigente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodActividad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Objetivos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaFin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodTipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodEstado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Asistencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vigente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NotaFinal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MostrarCertificado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComunicaSence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlagNuevaConexion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RutTutor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodActividadTutor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodActividad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Objetivos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Imagen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaFin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodTipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodEstado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Asistencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vigente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NotaFinal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MostrarCertificado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComunicaSence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlagNuevaConexion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RutTutor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodActividadTutor)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodActividadUsuario }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CodActividadUsuario }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CodActividadUsuario })
+        </td>
+    </tr>
+}
+
+</table>

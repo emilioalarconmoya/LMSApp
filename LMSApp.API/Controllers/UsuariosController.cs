@@ -28,24 +28,24 @@ namespace LMSApp.API.Controllers
             DLUSUARIOList dLUSUARIO = new DLUSUARIOList();
             DataTable dataTable = dLUSUARIO.GetUsuariosApp(1);
 
-            var importdata = from row in dataTable.AsEnumerable()
+            var importdata = from x in dataTable.AsEnumerable()
                              select new Usuario()
                              {
-                                RutUsuario = row.Field<int>("RutUsuario"),
-                                CodEmpresa = row.Field<int>("CodEmpresa"),
-                                Nombres = row.Field<string>("Nombres"),
-                                Apellidos = row.Field<string>("Apellidos"),
-                                Password = row.Field<string>("Password"),
-                                Email = row.Field<string>("Email"),
-                                FechaCaducidad = row.Field<DateTime>("FechaCaducidad"),
-                                FechaCreacion = row.Field<DateTime>("FechaCreacion"),
-                                Bloqueado = row.Field<bool>("Bloqueado"),
-                                ClaveSence = row.Field<string>("ClaveSence"),
-                                Profesion = row.Field<string>("Profesion"),
-                                Direccion = row.Field<string>("Direccion"),
-                                Comuna = row.Field<string>("Comuna"),
-                                Dni = row.Field<string>("Dni"),
-                                Fono = row.Field<string>("Fono"),
+                                RutUsuario = x.Field<int>("RutUsuario"),
+                                CodEmpresa = x.Field<int>("CodEmpresa"),
+                                Nombres = x.Field<string>("Nombres"),
+                                Apellidos = x.Field<string>("Apellidos"),
+                                Password = x.Field<string>("Password"),
+                                Email = x.Field<string>("Email"),
+                                FechaCaducidad = x.Field<DateTime>("FechaCaducidad"),
+                                FechaCreacion = x.Field<DateTime>("FechaCreacion"),
+                                Bloqueado = x.Field<bool>("Bloqueado"),
+                                ClaveSence = x.Field<string>("ClaveSence"),
+                                Profesion = x.Field<string>("Profesion"),
+                                Direccion = x.Field<string>("Direccion"),
+                                Comuna = x.Field<string>("Comuna"),
+                                Dni = x.Field<string>("Dni"),
+                                Fono = x.Field<string>("Fono"),
 
 
                              } ;

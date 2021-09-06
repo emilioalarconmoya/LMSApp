@@ -1,0 +1,154 @@
+﻿@model LMSApp.Common.Models.ActividadVigente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ActividadVigente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodActividad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodActividad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Objetivos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Objetivos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imagen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodTipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodTipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodEstado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodEstado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asistencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asistencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vigente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vigente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NotaFinal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NotaFinal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MostrarCertificado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MostrarCertificado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComunicaSence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComunicaSence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FlagNuevaConexion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlagNuevaConexion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RutTutor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RutTutor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodActividadTutor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodActividadTutor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CodActividadUsuario }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

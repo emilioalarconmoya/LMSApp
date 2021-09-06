@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LMSApp.View;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace LMSApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new ActividadVigentesPage();
         }
 
         protected override void OnStart()
