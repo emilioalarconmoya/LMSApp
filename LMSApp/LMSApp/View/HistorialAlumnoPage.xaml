@@ -1,16 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LMSApp.View.ActividadVigentesPage"
+             x:Class="LMSApp.View.HistorialAlumnoPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Actividades Vigentes">
+             Title="Historial">
     <ContentPage.Content>
         <StackLayout
-            BindingContext="{Binding ActividadVigentes}"
+            BindingContext="{Binding HistorialAlumnos}"
             Padding="10">
+            <SearchBar
+                Placeholder="Buscar..."
+                SearchCommand="{Binding SearchCommand}"
+                Text="{Binding Filter, Mode=TwoWay}">
+            </SearchBar>
             <ListView
                 HasUnevenRows="True"
-                ItemsSource="{Binding ActividadVigentes}"
+                ItemsSource="{Binding HistorialAlumnos}"
                 IsRefreshing="{Binding IsRefreshing}"
                 IsPullToRefreshEnabled="True"
                 RefreshCommand="{Binding RefreshCommand}">
@@ -62,15 +67,15 @@
                                     <ProgressBar
                                         Progress="{Binding Asistencia}">
                                     </ProgressBar>
-                                   
+
                                 </StackLayout>
-                                
+
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

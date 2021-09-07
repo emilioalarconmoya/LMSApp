@@ -21,12 +21,12 @@ namespace LMSApp.API.Controllers
         private DataContext db = new DataContext();
 
         // GET: api/Usuarios
-        public IQueryable<Usuario> GetUsuarios()
+        public IQueryable<Usuario> GetUsuarios(string rut)
         {
             //return db.Usuarios;
             //return db.Database.SqlQuery<Usuario>("exec proc_select_USUARIO_all_app @cod_empresa", new SqlParameter("@cod_empresa", 1)).AsQueryable();
             DLUSUARIOList dLUSUARIO = new DLUSUARIOList();
-            DataTable dataTable = dLUSUARIO.GetUsuariosApp(1);
+            DataTable dataTable = dLUSUARIO.GetUsuariosApp(rut);
 
             var importdata = from x in dataTable.AsEnumerable()
                              select new Usuario()

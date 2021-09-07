@@ -164,15 +164,15 @@ namespace ATENEUS.CLASES.DAL
 
         }
 
-        public DataTable GetUsuariosApp( Int64 CodEmpresa)
+        public DataTable GetUsuariosApp(string rut)
         {
             DB db = DatabaseFactory.Instance.GetDatabase();
             IDbDataParameter[] prms;
             prms = db.GetArrayParameter(1);
 
             prms[0] = db.GetParameter();
-            prms[0].Value = CodEmpresa;
-            prms[0].ParameterName = "@cod_empresa";
+            prms[0].Value = Utiles.RutUsrALng(rut);
+            prms[0].ParameterName = "@rut";
 
             DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_select_USUARIO_all_app", prms);
 

@@ -3,21 +3,37 @@
     using GalaSoft.MvvmLight.Command;
     using System.Windows.Input;
     using Xamarin.Forms;
+    using View;
+    using LMSApp.Services;
+    using LMSApp.Common.Models;
+    using System.Collections.ObjectModel;
+    using System.Collections.Generic;
 
     public class LoginViewModel : BaseViewModel
     {
-        #region eventos
-       
-        #endregion
-
         #region atributos
+        private string usuarioName;
         private string password;
         private bool isRunning;
         private bool isEnable;
+        private ApiService apiService;
+        private bool isRefreshing;
+        private ObservableCollection<Usuario> usuario;
         #endregion
 
         #region propiedades
-        public string Usuario { get; set; }
+        public ObservableCollection<Usuario> Usuario
+        {
+            get { return this.usuario; }
+            set { this.SetValue(ref this.usuario, value); }
+
+        }
+
+        public string UsuarioName
+        {
+            get { return this.usuarioName; }
+            set { SetValue(ref this.usuarioName, value); }
+        }
         public string Password 
         {
             get { return this.password; }
@@ -41,6 +57,7 @@
 
         public LoginViewModel()
         {
+            this.apiService = new ApiService();
             this.IsRemenbered = true;
             this.IsEnable = true;
         }
@@ -52,11 +69,16 @@
             }
         }
 
-       
+        public bool IsRefreshing
+        {
+            get { return this.isRefreshing; }
+            set { this.SetValue(ref this.isRefreshing, value); }
+
+        }
 
         public async void Login()
         {
-            if(string.IsNullOrEmpty(this.Usuario))
+            if(string.IsNullOrEmpty(this.usuarioName))
             {
                 await Application.Current.MainPage.DisplayAlert("Atención", "Debe Ingresar el nombre usuario.", "Aceptar");
                 return;
@@ -70,19 +92,52 @@
             this.IsRunning = true;
             this.IsEnable = false;
 
-            if(this.Usuario != "123456" || this.Password != "23456")
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSucces)
+            {
+                this.isRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");
+            }
+
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            //la validacion de conexion a internet tambien permite que demore un poco para poder cargar las keys que se encuentran en el App.xaml
+
+
+            var response = await this.apiService.GetList<Usuario>(url, "/api", "/Usuarios?Rut=" + this.usuarioName.Trim());
+            if (!response.IsSucces)
+            {
+                this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                return;
+            }
+
+            var list = (List<Usuario>)response.Result;
+            this.Usuario = new ObservableCollection<Usuario>(list);
+            this.IsRefreshing = false;
+
+
+
+            if (this.Usuario[0].RutUsuario != Utiles.RutUsrALng(usuarioName.Trim()) || Utiles.Encriptar(this.Password) != this.Usuario[0].Password.Trim())
             {
                 this.IsRunning = false;
                 this.IsEnable = true;
 
-                await Application.Current.MainPage.DisplayAlert("Error", "Usuario o contraseña incorrectos.", "Aceptar");
+                await Application.Current.MainPage.DisplayAlert("Atención", "Usuario o contraseña incorrecto.", "Aceptar");
                 this.Password = string.Empty;
                 return;
             }
             this.IsRunning = false;
             this.IsEnable = true;
 
-            await Application.Current.MainPage.DisplayAlert("Error", "Ingreso correcto", "Aceptar");
+            this.UsuarioName = string.Empty;
+            this.Password = string.Empty;
+
+            Application.Current.Properties["RutUsuario"] = this.Usuario[0].RutUsuario;
+
+            MainViewModel.GetInstance().HistorialAlumnos = new HistorialAlumnosViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new HistorialAlumnoPage()));
+            //MainViewModel.GetInstance().ActividadVigentes = new ActividadVigentesViewModel();
+            //await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new ActividadVigentesPage()));
         }
 
         #endregion

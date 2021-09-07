@@ -46,8 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ActividadVigente.cs" />
+    <Compile Include="Models\HistorialAlumno.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\Utiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

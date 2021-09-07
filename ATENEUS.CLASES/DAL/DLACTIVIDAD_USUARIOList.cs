@@ -352,6 +352,23 @@ namespace ATENEUS.CLASES.DAL
             return dt;
         }
 
+        public DataTable SelectHistorialUsuarioApp(long RutUsuario)
+        {
+            DB db = DatabaseFactory.Instance.GetDatabase();
+            IDbDataParameter[] prms;
+            prms = db.GetArrayParameter(1);
+
+            prms[0] = db.GetParameter();
+            prms[0].Value = RutUsuario;
+            prms[0].ParameterName = "@rut_usuario";
+
+           
+
+            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_select_historial_usuario_app", prms);
+
+            return dt;
+        }
+
         public DataTable SelectActividadesBuscador(string NomActividad, Int16 Tipo, Boolean Abierta, Boolean ParaInscripcion)
         {
             DB db = DatabaseFactory.Instance.GetDatabase();

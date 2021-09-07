@@ -13,19 +13,19 @@ using System.Web.Http.Description;
 
 namespace LMSApp.API.Controllers
 {
-    public class ActividadVigentesController : ApiController
+    public class HistorialAlumnoesController : ApiController
     {
         private DataContext db = new DataContext();
 
-        // GET: api/ActividadVigentes
-        public IQueryable<ActividadVigente> GetActividadVigentes(long RutUsuario, Int16 DiasEspera, Int64 CodEmpresa, Int32 horaZona)
+        // GET: api/HistorialAlumnoes
+        public IQueryable<HistorialAlumno> GetHistorialAlumnoes(int rutUsuario)
         {
-            //return db.ActividadVigentes;
+            //return db.HistorialAlumnoes;
             DLACTIVIDADUSUARIOList dLUSUARIO = new DLACTIVIDADUSUARIOList();
-            DataTable dataTable = dLUSUARIO.SelectActividadesVigentesApp(RutUsuario, DiasEspera, CodEmpresa, horaZona);
+            DataTable dataTable = dLUSUARIO.SelectHistorialUsuarioApp(rutUsuario);
 
             var importdata = from x in dataTable.AsEnumerable()
-                             select new ActividadVigente()
+                             select new HistorialAlumno()
                              {
                                  CodActividadUsuario = x.Field<int>("CodActividadUsuario"),
                                  CodActividad = x.Field<int>("CodActividad"),
@@ -42,9 +42,7 @@ namespace LMSApp.API.Controllers
                                  NotaFinal = x.Field<decimal>("NotaFinal"),
                                  MostrarCertificado = x.Field<bool>("MostrarCertificado"),
                                  ComunicaSence = x.Field<bool>("ComunicaSence"),
-                                 FlagNuevaConexion = x.Field<bool>("FlagNuevaConexion"),
-                                 RutTutor = x.Field<int>("RutTutor"),
-                                 CodActividadTutor = x.Field<int>("CodActividadTutor"),
+                                 
 
 
                              };
@@ -52,34 +50,34 @@ namespace LMSApp.API.Controllers
             return importdata.AsQueryable();
         }
 
-        // GET: api/ActividadVigentes/5
-        [ResponseType(typeof(ActividadVigente))]
-        public async Task<IHttpActionResult> GetActividadVigente(int id)
+        // GET: api/HistorialAlumnoes/5
+        [ResponseType(typeof(HistorialAlumno))]
+        public async Task<IHttpActionResult> GetHistorialAlumno(int id)
         {
-            ActividadVigente actividadVigente = await db.ActividadVigentes.FindAsync(id);
-            if (actividadVigente == null)
+            HistorialAlumno historialAlumno = await db.HistorialAlumnoes.FindAsync(id);
+            if (historialAlumno == null)
             {
                 return NotFound();
             }
 
-            return Ok(actividadVigente);
+            return Ok(historialAlumno);
         }
 
-        // PUT: api/ActividadVigentes/5
+        // PUT: api/HistorialAlumnoes/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutActividadVigente(int id, ActividadVigente actividadVigente)
+        public async Task<IHttpActionResult> PutHistorialAlumno(int id, HistorialAlumno historialAlumno)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != actividadVigente.CodActividadUsuario)
+            if (id != historialAlumno.CodActividadUsuario)
             {
                 return BadRequest();
             }
 
-            db.Entry(actividadVigente).State = EntityState.Modified;
+            db.Entry(historialAlumno).State = EntityState.Modified;
 
             try
             {
@@ -87,7 +85,7 @@ namespace LMSApp.API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ActividadVigenteExists(id))
+                if (!HistorialAlumnoExists(id))
                 {
                     return NotFound();
                 }
@@ -100,35 +98,35 @@ namespace LMSApp.API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ActividadVigentes
-        [ResponseType(typeof(ActividadVigente))]
-        public async Task<IHttpActionResult> PostActividadVigente(ActividadVigente actividadVigente)
+        // POST: api/HistorialAlumnoes
+        [ResponseType(typeof(HistorialAlumno))]
+        public async Task<IHttpActionResult> PostHistorialAlumno(HistorialAlumno historialAlumno)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.ActividadVigentes.Add(actividadVigente);
+            db.HistorialAlumnoes.Add(historialAlumno);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = actividadVigente.CodActividadUsuario }, actividadVigente);
+            return CreatedAtRoute("DefaultApi", new { id = historialAlumno.CodActividadUsuario }, historialAlumno);
         }
 
-        // DELETE: api/ActividadVigentes/5
-        [ResponseType(typeof(ActividadVigente))]
-        public async Task<IHttpActionResult> DeleteActividadVigente(int id)
+        // DELETE: api/HistorialAlumnoes/5
+        [ResponseType(typeof(HistorialAlumno))]
+        public async Task<IHttpActionResult> DeleteHistorialAlumno(int id)
         {
-            ActividadVigente actividadVigente = await db.ActividadVigentes.FindAsync(id);
-            if (actividadVigente == null)
+            HistorialAlumno historialAlumno = await db.HistorialAlumnoes.FindAsync(id);
+            if (historialAlumno == null)
             {
                 return NotFound();
             }
 
-            db.ActividadVigentes.Remove(actividadVigente);
+            db.HistorialAlumnoes.Remove(historialAlumno);
             await db.SaveChangesAsync();
 
-            return Ok(actividadVigente);
+            return Ok(historialAlumno);
         }
 
         protected override void Dispose(bool disposing)
@@ -140,9 +138,9 @@ namespace LMSApp.API.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ActividadVigenteExists(int id)
+        private bool HistorialAlumnoExists(int id)
         {
-            return db.ActividadVigentes.Count(e => e.CodActividadUsuario == id) > 0;
+            return db.HistorialAlumnoes.Count(e => e.CodActividadUsuario == id) > 0;
         }
     }
 }

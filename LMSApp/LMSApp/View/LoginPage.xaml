@@ -29,7 +29,7 @@
                     HeightRequest="40">
                     <Entry
                         Placeholder="Ingrese su nombre usuario"
-                        Text="{Binding Usuario, Mode=TwoWay}"
+                        Text="{Binding UsuarioName, Mode=TwoWay}"
                         x:Name="Usuario">
                     </Entry>
                 </Frame>
@@ -60,9 +60,7 @@
                     </Switch>
                 </StackLayout>
                 <ActivityIndicator
-                    IsRunning="{Binding IsRunnig, Mode=TwoWay}"
-                    VerticalOptions="CenterAndExpand">
-
+                    IsRunning="{Binding IsRunnig, Mode=TwoWay}">
                 </ActivityIndicator>
                 <Button
                     BackgroundColor="Navy"
