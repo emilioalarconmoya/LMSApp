@@ -6,9 +6,11 @@
              Title="Actividades Vigentes">
     <ContentPage.Content>
         <StackLayout
+            BackgroundColor="Silver"
             BindingContext="{Binding ActividadVigentes}"
             Padding="10">
             <ListView
+                BackgroundColor="Silver"
                 HasUnevenRows="True"
                 ItemsSource="{Binding ActividadVigentes}"
                 IsRefreshing="{Binding IsRefreshing}"
@@ -17,60 +19,65 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image 
-                                    Source="curso_generico.jpg"
-                                    VerticalOptions="Start"
-                                    HorizontalOptions="FillAndExpand"
-                                    Grid.Column="0"
-                                    HeightRequest="50">
-
-                                </Image>
-                                <StackLayout
+                            <Frame
+                                CornerRadius="20"
+                                HasShadow="True"
+                                Margin="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectActividadVigenteCommand}"/>
+                                </Frame.GestureRecognizers>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image 
+                                        Source="curso_generico.jpg"
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="FillAndExpand"
+                                        Grid.Column="0"
+                                        HeightRequest="50">
+                                    </Image>
+                                    <StackLayout
                                     Grid.Column="1">
-                                    <Label
-                                        FontAttributes="Bold"
-                                        Text="{Binding Nombre}">
-                                    </Label>
-                                    <StackLayout Orientation="Horizontal">
                                         <Label
-                                            
-                                            Text="{Binding FechaInicio}">
+                                            FontAttributes="Bold"
+                                            Text="{Binding Nombre}">
                                         </Label>
-                                        <Label
-                                            Text="al">
-                                        </Label>
-                                        <Label
-                                            
-                                            Text="{Binding FechaFin}">
-                                        </Label>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
+                                                Text="{Binding FechaInicio, StringFormat='{0:dd MM, yyyy}'}">
+                                            </Label>
+                                            <Label
+                                                Text="al">
+                                            </Label>
+                                            <Label
+                                                Text="{Binding FechaFin, StringFormat='{0:dd MM, yyyy}'}">
+                                            </Label>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
+                                                Text="{Binding Estado}">
+                                            </Label>
+                                            <Label
+                                                Text="Nota:"></Label>
+                                            <Label
+                                                Text="{Binding NotaFinal}">
+                                            </Label>
+                                        </StackLayout>
+                                        <ProgressBar
+                                            Progress="{Binding Asistencia}">
+                                        </ProgressBar>
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label
-                                            Text="{Binding Estado}">
-                                        </Label>
-                                        <Label
-                                            Text="Nota:"></Label>
-                                        <Label
-                                            Text="{Binding NotaFinal}">
-                                        </Label>
-                                    </StackLayout>
-                                    <ProgressBar
-                                        Progress="{Binding Asistencia}">
-                                    </ProgressBar>
-                                   
-                                </StackLayout>
-                                
-                            </Grid>
+
+                                </Grid>
+                            </Frame>
+
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

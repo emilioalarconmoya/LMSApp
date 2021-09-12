@@ -5,8 +5,8 @@
         #region views
         public LoginViewModel Login { get; set; }
         public ActividadVigentesViewModel ActividadVigentes { get; set; }
-
         public HistorialAlumnosViewModel HistorialAlumnos { get; set; }
+        public UnidadActividadesViewModel UnidadesActividades { get; set; }
         #endregion
 
 

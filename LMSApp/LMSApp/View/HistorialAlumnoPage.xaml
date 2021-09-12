@@ -3,74 +3,79 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LMSApp.View.HistorialAlumnoPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundColor="Silver"
              Title="Historial">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding HistorialAlumnos}"
             Padding="10">
             <SearchBar
+                BackgroundColor="Silver"
                 Placeholder="Buscar..."
                 SearchCommand="{Binding SearchCommand}"
                 Text="{Binding Filter, Mode=TwoWay}">
             </SearchBar>
             <ListView
+                BackgroundColor="Silver"
                 HasUnevenRows="True"
                 ItemsSource="{Binding HistorialAlumnos}"
                 IsRefreshing="{Binding IsRefreshing}"
                 IsPullToRefreshEnabled="True"
-                RefreshCommand="{Binding RefreshCommand}">
+                RefreshCommand="{Binding RefreshCommand}"
+                SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image 
+                            <Frame
+                                CornerRadius="10"
+                                HasShadow="True"
+                                Margin="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image 
                                     Source="curso_generico.jpg"
                                     VerticalOptions="Start"
                                     HorizontalOptions="FillAndExpand"
                                     Grid.Column="0"
                                     HeightRequest="50">
 
-                                </Image>
-                                <StackLayout
+                                    </Image>
+                                    <StackLayout
                                     Grid.Column="1">
-                                    <Label
+                                        <Label
                                         FontAttributes="Bold"
                                         Text="{Binding Nombre}">
-                                    </Label>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label
-                                            
-                                            Text="{Binding FechaInicio}">
                                         </Label>
-                                        <Label
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
+                                            Text="{Binding FechaInicio, StringFormat='{0:dd MM, yyyy}'}">
+                                            </Label>
+                                            <Label
                                             Text="al">
-                                        </Label>
-                                        <Label
-                                            
-                                            Text="{Binding FechaFin}">
-                                        </Label>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label
+                                            </Label>
+                                            <Label
+                                            Text="{Binding FechaFin, StringFormat='{0:dd MM, yyyy}'}">
+                                            </Label>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
                                             Text="{Binding Estado}">
-                                        </Label>
-                                        <Label
+                                            </Label>
+                                            <Label
                                             Text="Nota:"></Label>
-                                        <Label
+                                            <Label
                                             Text="{Binding NotaFinal}">
-                                        </Label>
-                                    </StackLayout>
-                                    <ProgressBar
+                                            </Label>
+                                        </StackLayout>
+                                        <ProgressBar
                                         Progress="{Binding Asistencia}">
-                                    </ProgressBar>
-
-                                </StackLayout>
-
-                            </Grid>
+                                        </ProgressBar>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

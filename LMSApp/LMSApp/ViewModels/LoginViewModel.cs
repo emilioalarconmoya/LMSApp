@@ -97,6 +97,7 @@
             {
                 this.isRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");
+                this.IsEnable = true;
             }
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
@@ -133,11 +134,12 @@
             this.Password = string.Empty;
 
             Application.Current.Properties["RutUsuario"] = this.Usuario[0].RutUsuario;
+            Application.Current.Properties["CodEmpresa"] = this.Usuario[0].CodEmpresa;
 
-            MainViewModel.GetInstance().HistorialAlumnos = new HistorialAlumnosViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new HistorialAlumnoPage()));
-            //MainViewModel.GetInstance().ActividadVigentes = new ActividadVigentesViewModel();
-            //await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new ActividadVigentesPage()));
+            //MainViewModel.GetInstance().HistorialAlumnos = new HistorialAlumnosViewModel();
+            //await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new HistorialAlumnoPage()));
+            MainViewModel.GetInstance().ActividadVigentes = new ActividadVigentesViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new ActividadVigentesPage()));
         }
 
         #endregion

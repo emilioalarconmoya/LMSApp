@@ -209,6 +209,7 @@
     <Compile Include="Controllers\ActividadVigentesController.cs" />
     <Compile Include="Controllers\HistorialAlumnoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UnidadesActividadesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">

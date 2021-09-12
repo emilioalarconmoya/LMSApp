@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LMSApp.View.UnidadActividadesPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Unidades">
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="Silver"
+            BindingContext="{Binding UnidadesActividades}"
+            Padding="10">
+            <Frame
+                CornerRadius="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="35" />
+                    </Grid.RowDefinitions>
+                    <Label 
+                        TextColor="Black"
+                        Text="{Binding NombreActividad}" 
+                        Grid.Row="0" 
+                        Grid.ColumnSpan="3"
+                        HorizontalTextAlignment="Center"
+                        FontSize="30">
+                    </Label>
+                    <Label
+                        HeightRequest="1"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalTextAlignment="Center"
+                        Text="Fechas">
+                    </Label>
+                    <Label
+                         HeightRequest="5"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalTextAlignment="Center"
+                        Text="Nota aprobación">
+                    </Label>
+                    <Label
+                        HeightRequest="5"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        HorizontalTextAlignment="Center"
+                        Text="Progreso">
+                    </Label>
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        HorizontalTextAlignment="Center"
+                        FontAttributes="Bold"
+                        Text="{Binding FechaInicio, StringFormat='{0:dd MM, yyyy}'}">
+                    </Label>
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        HorizontalTextAlignment="Center"
+                        FontAttributes="Bold"
+                        Text="{Binding NotaAprobacion}">
+                    </Label>
+                    <StackLayout
+                    Grid.Row="2"
+                    Grid.Column="2">
+                        <Label
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding Asistencia}">
+                        </Label>
+                        <ProgressBar
+                            Progress="{Binding Asistencia}">
+                        </ProgressBar>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+            
+            <ListView
+                BackgroundColor="Silver"
+                HasUnevenRows="True"
+                ItemsSource="{Binding UnidadesActividades}"
+                IsRefreshing="{Binding IsRefreshing}"
+                IsPullToRefreshEnabled="True"
+                RefreshCommand="{Binding RefreshCommand}"
+                SeparatorVisibility="None">
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell IsEnabled="{Binding Terminada}">
+                            <Frame
+                                CornerRadius="10"
+                                HasShadow="True"
+                                Margin="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image 
+                                    Source="curso_generico.jpg"
+                                    VerticalOptions="Start"
+                                    HorizontalOptions="FillAndExpand"
+                                    Grid.Column="0"
+                                    HeightRequest="50">
+
+                                    </Image>
+                                    <StackLayout
+                                    Grid.Column="1">
+                                        <Label
+                                        FontAttributes="Bold"
+                                        Text="{Binding Nombre}">
+                                        </Label>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

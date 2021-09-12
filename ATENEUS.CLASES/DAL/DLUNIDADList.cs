@@ -120,6 +120,40 @@ namespace ATENEUS.CLASES.DAL
             return dt;
         }
 
+        public DataTable SelectAvanceUnidadesApp(long CodActivUsr)
+        {
+            DB db = DatabaseFactory.Instance.GetDatabase();
+            IDbDataParameter[] prms;
+            prms = db.GetArrayParameter(1);
+
+            prms[0] = db.GetParameter();
+            prms[0].Value = CodActivUsr;
+            prms[0].ParameterName = "@cod_activ_usr";
+
+            //prms[1] = db.GetParameter();
+            //prms[1].Value = CodEmpresa;
+            //prms[1].ParameterName = "@cod_empresa";
+
+            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_select_avance_unidades_app", prms);
+
+            return dt;
+        }
+
+        public DataTable SelectUnidadesActividadApp(int CodActividad)
+        {
+            DB db = DatabaseFactory.Instance.GetDatabase();
+            IDbDataParameter[] prms;
+            prms = db.GetArrayParameter(1);
+
+            prms[0] = db.GetParameter();
+            prms[0].Value = CodActividad;
+            prms[0].ParameterName = "@COD_ACTIVIDAD";
+
+            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_unidades_actividad_app", prms);
+
+            return dt;
+        }
+
         public DataTable SelectActividadSU(long CodActividad)
         {
             DB db = DatabaseFactory.Instance.GetDatabase();

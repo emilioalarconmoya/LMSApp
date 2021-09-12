@@ -9,17 +9,23 @@
     using System;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
+    using System.Linq;
 
     public class ActividadVigentesViewModel : BaseViewModel
     {
+
+        private int rutUsuario = (int)Application.Current.Properties["RutUsuario"];
+        private int codEmpresa = (int)Application.Current.Properties["CodEmpresa"];
+
         private ApiService apiService;
 
-        private ObservableCollection<ActividadVigente> actividadVigentes;
+        private ObservableCollection<ActividadVigentesItemViewModel> actividadVigentes;
 
 
         private bool isRefreshing;
+        private ActividadVigentesItemViewModel actividadVigentesItemViewModel;
 
-        public ObservableCollection<ActividadVigente> ActividadVigentes
+        public ObservableCollection<ActividadVigentesItemViewModel> ActividadVigentes
         {
             get { return this.actividadVigentes; }
             set { this.SetValue(ref this.actividadVigentes, value); }
@@ -30,6 +36,11 @@
         {
             this.apiService = new ApiService();
             this.LoadActividadVigentes();
+        }
+
+        public ActividadVigentesViewModel(ActividadVigentesItemViewModel actividadVigentesItemViewModel)
+        {
+            this.actividadVigentesItemViewModel = actividadVigentesItemViewModel;
         }
 
         public bool IsRefreshing
@@ -53,8 +64,8 @@
             var url = Application.Current.Resources["UrlAPI"].ToString();
             //la validacion de conexion a internet tambien permite que demore un poco para poder cargar las keys que se encuentran en el App.xaml
 
-
-            var response = await this.apiService.GetList<ActividadVigente>(url, "/api", "/ActividadVigentes?RutUsuario=100&DiasEspera=0&CodEmpresa=1&horaZona=-4");
+            //int rut = (int)Application.Current.Properties["RutUsuario"];
+            var response = await this.apiService.GetList<ActividadVigente>(url, "/api", "/ActividadVigentes?RutUsuario=" + rutUsuario + "&DiasEspera=0&CodEmpresa=" + codEmpresa  + "&horaZona=-4");
             if(!response.IsSucces)
             {
                 this.IsRefreshing = false;
@@ -63,9 +74,36 @@
             }
 
             var list = (List<ActividadVigente>)response.Result;
-            this.ActividadVigentes = new ObservableCollection<ActividadVigente>(list);
+            this.ActividadVigentes = new ObservableCollection<ActividadVigentesItemViewModel>(this.ToActividadVigentesItemViewModel(list));
             this.IsRefreshing = false;
         }
+
+        #region metodos
+        private IEnumerable<ActividadVigentesItemViewModel> ToActividadVigentesItemViewModel(List<ActividadVigente> list)
+        {
+            return list.Select(x => new ActividadVigentesItemViewModel
+            {
+                CodActividadUsuario = x.CodActividadUsuario,
+                CodActividad = x.CodActividad,
+                Nombre = x.Nombre,
+                Objetivos = x.Objetivos,
+                Imagen = x.Imagen,
+                FechaFin = x.FechaFin,
+                FechaInicio = x.FechaInicio,
+                CodTipo = x.CodTipo,
+                CodEstado = x.CodEstado,
+                Asistencia = x.Asistencia,
+                Estado = x.Estado,
+                Vigente = x.Vigente,
+                NotaFinal = x.NotaFinal,
+                MostrarCertificado = x.MostrarCertificado,
+                ComunicaSence = x.ComunicaSence,
+                FlagNuevaConexion = x.FlagNuevaConexion,
+                RutTutor = x.RutTutor,
+                CodActividadTutor = x.CodActividadTutor,
+            });
+        }
+        #endregion
 
         public ICommand RefreshCommand
         {

@@ -21,11 +21,11 @@ namespace LMSApp.Backend.Controllers
         private LocalDataContext db = new LocalDataContext();
 
         // GET: Usuarios
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string rut)
         {
             //return View(await db.Usuarios.ToListAsync());
             DLUSUARIOList dLUSUARIO = new DLUSUARIOList();
-            DataTable dataTable = dLUSUARIO.GetUsuariosApp(1);
+            DataTable dataTable = dLUSUARIO.GetUsuariosApp(rut);
 
 
             return View(dataTable.AsEnumerable().Select(x => new Usuario
