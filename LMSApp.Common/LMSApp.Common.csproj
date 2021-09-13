@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="Models\ActividadVigente.cs" />
     <Compile Include="Models\HistorialAlumno.cs" />
+    <Compile Include="Models\Pregunta.cs" />
+    <Compile Include="Models\PreguntaUnidad.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Utiles.cs" />

@@ -15,5 +15,9 @@
         public System.Data.Entity.DbSet<LMSApp.Common.Models.HistorialAlumno> HistorialAlumnoes { get; set; }
 
         public System.Data.Entity.DbSet<LMSApp.Common.UnidadesActividad> UnidadesActividads { get; set; }
+
+        public System.Data.Entity.DbSet<LMSApp.Common.Models.Pregunta> Preguntas { get; set; }
+
+        public System.Data.Entity.DbSet<LMSApp.Common.Models.PreguntaUnidad> PreguntaUnidads { get; set; }
     }
 }

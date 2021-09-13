@@ -15,12 +15,15 @@ namespace LMSApp.ViewModels
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
     using System.Linq;
+    using System.Data;
+
     public class UnidadActividadesViewModel : BaseViewModel
     {
 
         #region atributos
         private ApiService apiService;
-        private ObservableCollection<UnidadesActividad> unidadesActividades;
+        private ObservableCollection<UnidadActividadesItemViewModel> unidadesActividadesItem;
+        private List<UnidadesActividad> unidadesActividades;
         private bool isRefreshing;
         private string filter;
         private List<UnidadesActividad> unidadesActividadList;
@@ -29,15 +32,17 @@ namespace LMSApp.ViewModels
         private DateTime fechaFin;
         private decimal notaAprobacion;
         private decimal asistencia;
+        private string nombreImagen;
+        private bool isEnable;
 
         private int codActividadUsuario = (int)Application.Current.Properties["CodActividadUsuario"];
         #endregion
 
         #region Propiedades
-        public ObservableCollection<UnidadesActividad> UnidadesActividades
+        public ObservableCollection<UnidadActividadesItemViewModel> UnidadesActividades
         {
-            get { return this.unidadesActividades; }
-            set { this.SetValue(ref this.unidadesActividades, value); }
+            get { return this.unidadesActividadesItem; }
+            set { this.SetValue(ref this.unidadesActividadesItem, value); }
 
         }
         public bool IsRefreshing
@@ -76,6 +81,12 @@ namespace LMSApp.ViewModels
             get { return this.asistencia; }
             set { this.SetValue(ref this.asistencia, value); }
         }
+
+        public string NombreImagen
+        {
+            get { return this.nombreActividad; }
+            set { this.SetValue(ref this.nombreActividad, value); }
+        }
         public string Filter
         {
             get { return this.filter; }
@@ -85,6 +96,11 @@ namespace LMSApp.ViewModels
                 //this.Search();
             }
 
+        }
+        public bool IsEnable
+        {
+            get { return this.isEnable; }
+            set { this.SetValue(ref this.isEnable, value); }
         }
         #endregion
 
@@ -121,15 +137,78 @@ namespace LMSApp.ViewModels
                 return;
             }
 
-            this.unidadesActividadList = (List<UnidadesActividad>)response.Result;
-            this.UnidadesActividades = new ObservableCollection<UnidadesActividad>(this.unidadesActividadList);
+            unidadesActividades = (List<UnidadesActividad>)response.Result;
+            this.UnidadesActividades = new ObservableCollection<UnidadActividadesItemViewModel>(this.ToUnidadActividadesItemViewModel(unidadesActividades));
             this.IsRefreshing = false;
 
-            this.NombreActividad = this.UnidadesActividades[0].NombreActividad;
-            this.FechaInicio = this.UnidadesActividades[0].FechaInicio;
-            this.FechaFin = this.UnidadesActividades[0].FechaFin;
-            this.NotaAprobacion = this.UnidadesActividades[0].NotaAprobacion;
-            this.Asistencia = this.UnidadesActividades[0].Asistencia;
+            this.NombreActividad = this.unidadesActividades[0].NombreActividad;
+            this.FechaInicio = this.unidadesActividades[0].FechaInicio;
+            this.FechaFin = this.unidadesActividades[0].FechaFin;
+            this.NotaAprobacion = this.unidadesActividades[0].NotaAprobacion;
+            this.Asistencia = this.unidadesActividades[0].Asistencia;
+
+            //for (int i = 0; i < UnidadesActividades.Count; i++)
+            //{
+
+            //    DataTable dtUnidades = 
+            //    //if(UnidadesActividades[i].NivelPrerequisito !=0)
+            //    //{
+            //    //    if(UnidadesActividades[i].OrdenRelativo == UnidadesActividades[i].NivelPrerequisito)
+            //    //    {
+
+            //    //    }
+            //    //}
+            //    //else
+            //    //{
+
+            //    //}
+            //}
+
+            
+
+
+        }
+
+        private IEnumerable<UnidadActividadesItemViewModel> ToUnidadActividadesItemViewModel(List<UnidadesActividad> list)
+        {
+            return list.Select(x => new UnidadActividadesItemViewModel
+            {
+                CodActividadUsuario = x.CodActividadUsuario,
+                CodUnidad = x.CodUnidad,
+                Nombre = x.Nombre,
+                OrdenRelativo = x.OrdenRelativo,
+                NivelPrerequisito = x.NivelPrerequisito,
+                AvisaTermino = x.AvisaTermino,
+                CodTipoUnidad = x.CodTipoUnidad,
+                Archivo = x.Archivo,
+                NumeroVisitas = x.NumeroVisitas,
+                TiempoConexion = x.TiempoConexion,
+                UltimaVisita = x.UltimaVisita,
+                Terminada = x.Terminada,
+                IdForo = x.IdForo,
+                TemasForos = x.TemasForos,
+                Descripcion = x.Descripcion,
+                NombreActividad = x.NombreActividad,
+                FechaInicio = x.FechaInicio,
+                FechaFin = x.FechaFin,
+                NotaAprobacion = x.NotaAprobacion,
+                Asistencia = x.Asistencia,
+                FlagNuevaConexion = x.FlagNuevaConexion,
+                RutOtec = x.RutOtec,
+                Token = x.Token,
+                RutUsuario = x.RutUsuario,
+                IdRegistroSence = x.IdRegistroSence,
+                FlagActivo = x.FlagActivo,
+                FechaHora = x.FechaHora,
+                CodActividad = x.CodActividad,
+                RutTutor = x.RutTutor,
+                CodActividadTutor = x.CodActividadTutor,
+                NotaFinal = x.NotaFinal,
+                FlagEstadoAprobacion = x.FlagEstadoAprobacion,
+                Mensaje = x.Mensaje,
+                Nivel = x.Nivel,
+                MinutosEvaluacion = x.MinutosEvaluacion,
+            });
         }
         #endregion
 

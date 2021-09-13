@@ -169,6 +169,23 @@ namespace ATENEUS.CLASES.DAL
             return objPregunta;
         }
 
+        public DataTable PreguntaUnidadApp(int codPregunta)
+        {
+            //DB db = DatabaseFactory.Instance.GetDatabase();
+
+            DB db = DatabaseFactory.Instance.GetDatabase();
+            IDbDataParameter[] prms = db.GetArrayParameter(1);
+
+            prms[0] = db.GetParameter();
+            prms[0].Value = codPregunta;
+            prms[0].ParameterName = "@CodPregunta";
+
+            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_pregunta_unidad", prms);
+
+            
+            return dt;
+        }
+
 
         public EPREGUNTA PreguntaEncuestaSatisfaccion(Int16 CodPregunta)
         {
