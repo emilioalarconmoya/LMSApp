@@ -1,6 +1,7 @@
 ﻿namespace LMSApp.Common.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     public class Pregunta
     {
@@ -9,5 +10,8 @@
         public int CodTipoPregunta { get; set; }
         public string Texto { get; set; }
         public int CodCorrecta { get; set; }
+        public List<Alternativa> Alternativa { get; set; }
+
+        
     }
 }

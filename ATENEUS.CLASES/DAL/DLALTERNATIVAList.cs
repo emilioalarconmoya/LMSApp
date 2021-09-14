@@ -72,6 +72,25 @@ namespace ATENEUS.CLASES.DAL
             return lst;
         }
 
+        public DataTable AlternativasPreguntaApp(int CodPregunta)
+        {
+            DB db = DatabaseFactory.Instance.GetDatabase();
+            IDbDataParameter[] prms;
+            prms = db.GetArrayParameter(1);
+
+            prms[0] = db.GetParameter();
+            prms[0].Value = CodPregunta;
+            prms[0].ParameterName = "@CodPregunta";
+
+            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_alternativas_pregunta_app", prms);
+
+            List<EALTERNATIVA> lst = new List<EALTERNATIVA>();
+
+            
+
+            return dt;
+        }
+
         public List<EALTERNATIVA> AlternativasPreguntaEncuesta(Int16 CodPregunta)
         {
             DB db = DatabaseFactory.Instance.GetDatabase();

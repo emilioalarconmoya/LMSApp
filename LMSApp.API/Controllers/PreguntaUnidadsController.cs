@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using ATENEUS.CLASES.DAL;
 using LMSApp.Common.Models;
 using LMSApp.Domain.Models;
 
@@ -19,9 +20,27 @@ namespace LMSApp.API.Controllers
         private DataContext db = new DataContext();
 
         // GET: api/PreguntaUnidads
-        public IQueryable<PreguntaUnidad> GetPreguntaUnidads()
+        public IQueryable<PreguntaUnidad> GetPreguntaUnidads(int codUnidad)
         {
-            return db.PreguntaUnidads;
+            //return db.PreguntaUnidads;
+            DLPREGUNTAUNIDADList dLPREGUNTAUNIDAD = new DLPREGUNTAUNIDADList();
+            DataTable dataTable = dLPREGUNTAUNIDAD.PreguntasUnidadApp(codUnidad);
+            //DLPREGUNTA dLPREGUNTA = new DLPREGUNTA();
+
+            var importdata = from x in dataTable.AsEnumerable()
+                             select new PreguntaUnidad()
+                             {
+                                 CodPregunta = x.Field<int>("CodPregunta"),
+                                 CodUnidad = x.Field<int>("CodUnidad"),
+                                 PuntajeMax = x.Field<int>("PuntajeMax"),
+                                 Imagen = x.Field<string>("Imagen"),
+                                 Ancho = x.Field<string>("Ancho"),
+                                 Alto = x.Field<string>("Alto"),
+                                 Link = x.Field<string>("Link"),
+                                 UrlVideo = x.Field<string>("UrlVideo"),
+                             };
+
+            return importdata.AsQueryable();
         }
 
         // GET: api/PreguntaUnidads/5

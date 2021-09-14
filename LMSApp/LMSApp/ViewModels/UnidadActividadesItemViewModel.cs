@@ -18,7 +18,8 @@
 
         private async void SelectUnidad()
         {
-            if(this.CodTipoUnidad == 1)
+            Application.Current.Properties["CodUnidad"] = this.CodUnidad;
+            if (this.CodTipoUnidad == 1)
             {
                 MainViewModel.GetInstance().ContendorUams = new ContendorUamsViewModel();
                 await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new ContenedorUam()));

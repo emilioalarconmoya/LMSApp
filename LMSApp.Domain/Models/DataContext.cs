@@ -19,5 +19,7 @@
         public System.Data.Entity.DbSet<LMSApp.Common.Models.Pregunta> Preguntas { get; set; }
 
         public System.Data.Entity.DbSet<LMSApp.Common.Models.PreguntaUnidad> PreguntaUnidads { get; set; }
+
+        public System.Data.Entity.DbSet<LMSApp.Common.Models.Alternativa> Alternativas { get; set; }
     }
 }

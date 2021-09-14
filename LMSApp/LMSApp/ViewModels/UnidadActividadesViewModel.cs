@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LMSApp.ViewModels
+﻿namespace LMSApp.ViewModels
 {
     using LMSApp.Common;
     using System.Collections.Generic;
@@ -26,7 +22,7 @@ namespace LMSApp.ViewModels
         private List<UnidadesActividad> unidadesActividades;
         private bool isRefreshing;
         private string filter;
-        private List<UnidadesActividad> unidadesActividadList;
+        //private List<UnidadesActividad> unidadesActividadList;
         private string nombreActividad;
         private DateTime fechaInicio;
         private DateTime fechaFin;

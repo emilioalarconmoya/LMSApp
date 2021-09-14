@@ -180,7 +180,7 @@ namespace ATENEUS.CLASES.DAL
             prms[0].Value = codPregunta;
             prms[0].ParameterName = "@CodPregunta";
 
-            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_pregunta_unidad", prms);
+            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_pregunta_unidad_app", prms);
 
             
             return dt;
