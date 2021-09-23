@@ -4,10 +4,14 @@
              x:Class="LMSApp.View.Evaluacion"
              Title="Evaluación">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView VerticalOptions="CenterAndExpand">
+           
+                <StackLayout
+                    x:Name="contenedorPreguntas"
+                    HorizontalOptions="FillAndExpand">
+                </StackLayout>
+           
+           
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

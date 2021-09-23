@@ -127,6 +127,32 @@ namespace ATENEUS.CLASES.DAL
             return Utiles.ConvertToInt64(dt.Rows[0][0]);
         }
 
+        public int RespuestaCorrecta(int codPregunta)
+        {
+            DB db = DatabaseFactory.Instance.GetDatabase();
+            IDbDataParameter[] prms = db.GetArrayParameter(1);
+
+            prms[0] = db.GetParameter();
+            prms[0].Value = codPregunta;
+            prms[0].ParameterName = "@CodPregunta";
+
+            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_respuesta_correcta", prms);
+            return Utiles.ConvertToInt32(dt.Rows[0][0]);
+        }
+
+        public DataTable RespuestaCorrectaDataTable(int codPregunta)
+        {
+            DB db = DatabaseFactory.Instance.GetDatabase();
+            IDbDataParameter[] prms = db.GetArrayParameter(1);
+
+            prms[0] = db.GetParameter();
+            prms[0].Value = codPregunta;
+            prms[0].ParameterName = "@CodPregunta";
+
+            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_respuesta_correcta", prms);
+            return dt;
+        }
+
         #endregion
 
         #region Public Methods

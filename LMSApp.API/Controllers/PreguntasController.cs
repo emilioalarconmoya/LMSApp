@@ -37,6 +37,14 @@ namespace LMSApp.API.Controllers
 
             return importdata.AsQueryable();
         }
+        //// GET: api/Preguntas/5
+        //public string RespuestaCorrecta(int codPregunta)
+        //{
+
+        //    DLPREGUNTA objDLPR = new DLPREGUNTA();
+        //    return objDLPR.RespuestaCorrecta(codPregunta).ToString();
+           
+        //}
 
         // GET: api/Preguntas/5
         [ResponseType(typeof(Pregunta))]

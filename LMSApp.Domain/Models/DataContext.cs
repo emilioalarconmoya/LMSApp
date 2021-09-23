@@ -21,5 +21,9 @@
         public System.Data.Entity.DbSet<LMSApp.Common.Models.PreguntaUnidad> PreguntaUnidads { get; set; }
 
         public System.Data.Entity.DbSet<LMSApp.Common.Models.Alternativa> Alternativas { get; set; }
+
+        public System.Data.Entity.DbSet<LMSApp.Common.Models.RespuestaCorrecta> RespuestaCorrectas { get; set; }
+
+        public System.Data.Entity.DbSet<LMSApp.Common.Models.Evaluacion> Evaluacions { get; set; }
     }
 }

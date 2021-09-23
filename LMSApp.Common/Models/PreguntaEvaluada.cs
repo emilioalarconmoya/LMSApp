@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    public class PreguntaUnidad
+    public class PreguntaEvaluada
     {
         [Key]
         public int CodPregunta { get; set; }

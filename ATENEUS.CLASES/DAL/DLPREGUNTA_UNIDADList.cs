@@ -161,7 +161,28 @@ namespace ATENEUS.CLASES.DAL
             return lst;
         }
 
+        public DataTable PreguntasEvaluadasApp(int CodUnidad, int CodActivUsr, int CodEmpresa)
+        {
+            DB db = DatabaseFactory.Instance.GetDatabase();
+            IDbDataParameter[] prms;
+            prms = db.GetArrayParameter(3);
 
+            prms[0] = db.GetParameter();
+            prms[0].Value = CodUnidad;
+            prms[0].ParameterName = "@COD_UNIDAD";
+
+            prms[1] = db.GetParameter();
+            prms[1].Value = CodActivUsr;
+            prms[1].ParameterName = "@COD_ACTIV_USR";
+
+            prms[2] = db.GetParameter();
+            prms[2].Value = CodEmpresa;
+            prms[2].ParameterName = "@cod_empresa";
+
+            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_preguntas_evaluadas_app", prms);
+
+            return dt;
+        }
         public List<EPREGUNTAUNIDAD> PreguntasEncuestadas(Int16 CodUnidad, Int64 CodActivUsr,Int64 CodEmpresa)
         {
             DB db = DatabaseFactory.Instance.GetDatabase();

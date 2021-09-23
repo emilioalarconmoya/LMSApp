@@ -12,6 +12,7 @@
     using GalaSoft.MvvmLight.Command;
     using System.Linq;
     using System.Data;
+    using View;
 
     public class EvaluacionViewModel : BaseViewModel
     {
@@ -61,7 +62,7 @@
         #endregion
 
         #region metodos
-        private async void LoadEvaluacion()
+        public async void LoadEvaluacion()
         {
             this.IsRefreshing = true;
 
@@ -92,12 +93,15 @@
                 preguntaUnidadList[i].Pregunta = (List<Pregunta>)responsePregunta.Result;
                                 
                 var responseAlternativa = await this.apiService.GetList<Alternativa>(url, "/api", "/Alternativas?codPregunta=" + preguntaUnidadList[i].CodPregunta);
-                preguntaUnidadList[i].Pregunta[i].Alternativa = (List<Alternativa>)responseAlternativa.Result;
+                preguntaUnidadList[i].Pregunta[0].Alternativa = (List<Alternativa>)responseAlternativa.Result;
 
             }
             
             this.PreguntaUnidads = new ObservableCollection<PreguntaUnidad>(preguntaUnidadList);
             this.IsRefreshing = false;
+
+            
+            
 
             //this.NombreActividad = this.unidadesActividades[0].NombreActividad;
             //this.FechaInicio = this.unidadesActividades[0].FechaInicio;

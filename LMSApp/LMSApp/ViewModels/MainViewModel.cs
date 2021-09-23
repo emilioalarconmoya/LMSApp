@@ -8,7 +8,7 @@
         public HistorialAlumnosViewModel HistorialAlumnos { get; set; }
         public UnidadActividadesViewModel UnidadesActividades { get; set; }
         public ContendorUamsViewModel ContendorUams { get; set; }
-        public EvaluacionViewModel Evaluaciones { get; set; }
+        //public EvaluacionViewModel Evaluaciones { get; set; }
         public EncuestaViewModel Encuestas { get; set; }
 
         #endregion

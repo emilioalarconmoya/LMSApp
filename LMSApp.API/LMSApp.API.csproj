@@ -208,10 +208,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActividadVigentesController.cs" />
     <Compile Include="Controllers\AlternativasController.cs" />
+    <Compile Include="Controllers\EvaluacionsController.cs" />
     <Compile Include="Controllers\HistorialAlumnoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PreguntaEvaluadasController.cs" />
     <Compile Include="Controllers\PreguntasController.cs" />
     <Compile Include="Controllers\PreguntaUnidadsController.cs" />
+    <Compile Include="Controllers\RespuestaCorrectasController.cs" />
     <Compile Include="Controllers\UnidadesActividadesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

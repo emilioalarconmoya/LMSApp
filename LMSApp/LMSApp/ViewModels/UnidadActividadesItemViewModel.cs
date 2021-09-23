@@ -26,7 +26,7 @@
             }
             else if(this.CodTipoUnidad == 2)
             {
-                MainViewModel.GetInstance().Evaluaciones = new EvaluacionViewModel();
+                //MainViewModel.GetInstance().Evaluaciones = new EvaluacionViewModel();
                 await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new Evaluacion()));
             }
             else if (this.CodTipoUnidad == 3)
