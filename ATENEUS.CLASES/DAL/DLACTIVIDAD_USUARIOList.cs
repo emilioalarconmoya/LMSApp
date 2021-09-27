@@ -59,6 +59,22 @@ namespace ATENEUS.CLASES.DAL
             return dt;
         }
 
+        public DataTable SelectActividadUsuarioApp(int codActividadUsuario)
+        {
+            DB db = DatabaseFactory.Instance.GetDatabase();
+            IDbDataParameter[] prms;
+            prms = db.GetArrayParameter(1);
+
+            prms[0] = db.GetParameter();
+            prms[0].Value = codActividadUsuario;
+            prms[0].ParameterName = "@COD_ACTIV_USR";
+
+          
+            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_select_ACTIVIDAD_USUARIO_app", prms);
+
+            return dt;
+        }
+
         public DataTable SelectActividadesVigentes(long RutUsuario, Int16 DiasEspera, Int64 CodEmpresa, Int32 horaZona)
         {
             DB db = DatabaseFactory.Instance.GetDatabase();

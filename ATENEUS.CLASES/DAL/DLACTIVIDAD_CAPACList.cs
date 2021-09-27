@@ -78,6 +78,22 @@ namespace ATENEUS.CLASES.DAL
 
             return dt;
         }
+
+        public DataTable SelectActividadApp(int codActividad)
+        {
+            DB db = DatabaseFactory.Instance.GetDatabase();
+            IDbDataParameter[] prms;
+            prms = db.GetArrayParameter(1);
+
+
+            prms[0] = db.GetParameter();
+            prms[0].Value = codActividad;
+            prms[0].ParameterName = "@COD_ACTIVIDAD";
+
+            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_select_ACTIVIDAD_CAPAC_app", prms);
+
+            return dt;
+        }
         public List<EACTIVIDADCAPAC> SelectAllTutor(long rutTutor)
         {
             DB db = DatabaseFactory.Instance.GetDatabase();

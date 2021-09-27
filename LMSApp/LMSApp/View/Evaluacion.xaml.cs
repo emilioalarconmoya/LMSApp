@@ -22,6 +22,7 @@
         private ApiService apiService;
         private List<PreguntaUnidad> preguntaUnidadList;
         private List<PreguntaEvaluada> preguntaEvaluadas;
+        private List<Common.Models.Evaluacion> preguntaEvaluacion;
         private int codUnidad = (int)Application.Current.Properties["CodUnidad"];
         private int codActividadUsuario = (int)Application.Current.Properties["CodActividadUsuario"];
         private int codEmpresa = (int)Application.Current.Properties["CodEmpresa"];
@@ -92,9 +93,27 @@
                     contenedorPreguntas.Children.Add(pregunta);
                     contenedorPreguntas.Children.Add(codPregunta);
 
-                    var responsePreguntaEvaluacion= await this.apiService.GetList<Pregunta>(url, "/api", "/Evaluacions?codActividadUsaurio=" + codActividadUsuario + "&codUnidad=" + codUnidad + 
-                                                                                            "&codPregunta=" + preguntaEvaluadas[i].Pregunta[0].CodPregunta + );
-                    preguntaEvaluadas[i].Pregunta = (List<Pregunta>)responsePregunta.Result;
+                    var responsePreguntaEvaluacion= await this.apiService.GetList<Common.Models.Evaluacion>(url, "/api", "/Evaluacions?codActividadUsaurio=" + codActividadUsuario + "&codUnidad=" + codUnidad + 
+                                                                                            "&codPregunta=" + preguntaEvaluadas[i].Pregunta[0].CodPregunta + "&codEmpresa=" + codEmpresa);
+                    preguntaEvaluacion = (List<Common.Models.Evaluacion>)responsePreguntaEvaluacion.Result;
+                    var alternativa = new RadioButton();
+                    for (int j = 0; j < preguntaEvaluadas[i].Pregunta[0].Alternativa.Count; j++)
+                    {
+                        alternativa = new RadioButton()
+                        {
+                            Content = preguntaEvaluadas[i].Pregunta[0].Alternativa[j].TextoAlternativa,
+                            Value = (j + 1),
+                            GroupName = (i + 1).ToString(),
+                            IsEnabled = false
+
+                        };
+                        if (preguntaEvaluacion[0].TextoRespuesta == alternativa.Value.ToString())
+                        {
+                            alternativa.IsChecked = true;
+                        }
+
+                        contenedorPreguntas.Children.Add(alternativa);
+                    }
                 }
             }
             else

@@ -25,5 +25,13 @@
         public System.Data.Entity.DbSet<LMSApp.Common.Models.RespuestaCorrecta> RespuestaCorrectas { get; set; }
 
         public System.Data.Entity.DbSet<LMSApp.Common.Models.Evaluacion> Evaluacions { get; set; }
+
+        public System.Data.Entity.DbSet<LMSApp.Common.Models.PreguntaEvaluada> PreguntaEvaluadas { get; set; }
+
+        public System.Data.Entity.DbSet<LMSApp.Common.Models.ActividadUsuario> ActividadUsuarios { get; set; }
+
+        public System.Data.Entity.DbSet<LMSApp.Common.Models.ActividadCapac> ActividadCapacs { get; set; }
+
+        public System.Data.Entity.DbSet<LMSApp.Common.Models.Unidad> Unidads { get; set; }
     }
 }

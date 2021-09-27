@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ActividadCapac.cs" />
+    <Compile Include="Models\ActividadUsuario.cs" />
     <Compile Include="Models\ActividadVigente.cs" />
     <Compile Include="Models\Alternativa.cs" />
     <Compile Include="Models\Evaluacion.cs" />
@@ -54,6 +56,7 @@
     <Compile Include="Models\PreguntaUnidad.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\RespuestaCorrecta.cs" />
+    <Compile Include="Models\Unidad.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Utiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

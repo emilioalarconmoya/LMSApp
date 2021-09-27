@@ -1,18 +1,28 @@
-﻿namespace LMSApp.API.Controllers
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web.Http;
+using System.Web.Http.Description;
+using ATENEUS.CLASES.DAL;
+using LMSApp.Common.Models;
+using LMSApp.Domain.Models;
+
+namespace LMSApp.API.Controllers
 {
-    using ATENEUS.CLASES.DAL;
-    using LMSApp.Common.Models;
-    using LMSApp.Domain.Models;
-    using System.Collections.Generic;
-    using System.Data;
-    using System.Linq;
-    using System.Web.Http;
     public class PreguntaEvaluadasController : ApiController
     {
         private DataContext db = new DataContext();
+
         // GET: api/PreguntaEvaluadas
-        public IEnumerable<PreguntaEvaluada> Get(int codUnidad, int codActividadUsaurio, int codEmpresa)
+        public IQueryable<PreguntaEvaluada> GetPreguntaEvaluadas(int codUnidad, int codActividadUsaurio, int codEmpresa)
         {
+            //return db.PreguntaEvaluadas;
             DLPREGUNTAUNIDADList dLPREGUNTAUNIDAD = new DLPREGUNTAUNIDADList();
             DataTable dataTable = dLPREGUNTAUNIDAD.PreguntasEvaluadasApp(codUnidad, codActividadUsaurio, codEmpresa);
             //DLPREGUNTA dLPREGUNTA = new DLPREGUNTA();
@@ -34,24 +44,96 @@
         }
 
         // GET: api/PreguntaEvaluadas/5
-        public string Get(int id)
+        [ResponseType(typeof(PreguntaEvaluada))]
+        public async Task<IHttpActionResult> GetPreguntaEvaluada(int id)
         {
-            return "value";
-        }
+            PreguntaEvaluada preguntaEvaluada = await db.PreguntaEvaluadas.FindAsync(id);
+            if (preguntaEvaluada == null)
+            {
+                return NotFound();
+            }
 
-        // POST: api/PreguntaEvaluadas
-        public void Post([FromBody]string value)
-        {
+            return Ok(preguntaEvaluada);
         }
 
         // PUT: api/PreguntaEvaluadas/5
-        public void Put(int id, [FromBody]string value)
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> PutPreguntaEvaluada(int id, PreguntaEvaluada preguntaEvaluada)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != preguntaEvaluada.CodPregunta)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(preguntaEvaluada).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PreguntaEvaluadaExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // POST: api/PreguntaEvaluadas
+        [ResponseType(typeof(PreguntaEvaluada))]
+        public async Task<IHttpActionResult> PostPreguntaEvaluada(PreguntaEvaluada preguntaEvaluada)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.PreguntaEvaluadas.Add(preguntaEvaluada);
+            await db.SaveChangesAsync();
+
+            return CreatedAtRoute("DefaultApi", new { id = preguntaEvaluada.CodPregunta }, preguntaEvaluada);
         }
 
         // DELETE: api/PreguntaEvaluadas/5
-        public void Delete(int id)
+        [ResponseType(typeof(PreguntaEvaluada))]
+        public async Task<IHttpActionResult> DeletePreguntaEvaluada(int id)
         {
+            PreguntaEvaluada preguntaEvaluada = await db.PreguntaEvaluadas.FindAsync(id);
+            if (preguntaEvaluada == null)
+            {
+                return NotFound();
+            }
+
+            db.PreguntaEvaluadas.Remove(preguntaEvaluada);
+            await db.SaveChangesAsync();
+
+            return Ok(preguntaEvaluada);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool PreguntaEvaluadaExists(int id)
+        {
+            return db.PreguntaEvaluadas.Count(e => e.CodPregunta == id) > 0;
         }
     }
 }
