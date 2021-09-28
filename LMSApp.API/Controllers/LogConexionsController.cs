@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using ATENEUS.BUSINESS;
+using ATENEUS.CLASES.DAO;
 using LMSApp.Common.Models;
 using LMSApp.Domain.Models;
 
@@ -39,35 +41,49 @@ namespace LMSApp.API.Controllers
 
         // PUT: api/LogConexions/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutLogConexion(int id, LogConexion logConexion)
+        public async Task<IHttpActionResult> PutLogConexion(LogConexion logConexion)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            if (id != logConexion.CodActividadUsuario)
-            {
-                return BadRequest();
-            }
+            //if (id != logConexion.CodActividadUsuario)
+            //{
+            //    return BadRequest();
+            //}
 
-            db.Entry(logConexion).State = EntityState.Modified;
+            //db.Entry(logConexion).State = EntityState.Modified;
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LogConexionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            //try
+            //{
+            //    await db.SaveChangesAsync();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    if (!LogConexionExists(id))
+            //    {
+            //        return NotFound();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
+            BFLOGCONEXION objBFLogConexion = new BFLOGCONEXION();
+            ELOGCONEXION objLogConexion = new ELOGCONEXION();
+
+            objLogConexion.CodActivUsr = logConexion.CodActividadUsuario;
+            objLogConexion.CodUnidad = Convert.ToInt16(logConexion.CodUnidad);
+            objLogConexion.Inicio = logConexion.Inicio;
+            objLogConexion.Fin = logConexion.Fin;
+            objLogConexion.Terminada = logConexion.FlagTerminada;
+            objLogConexion.TiempoRestanteSeg = logConexion.TiempoRestanteSegunto;
+            objLogConexion.PasoUltimaVisita = logConexion.PasoUltimaVisita;
+            objLogConexion.Cerrada = logConexion.Cerrada;
+            objLogConexion.CodEmpresa = logConexion.CodEmpresa;
+
+            objBFLogConexion.Update(objLogConexion);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -76,15 +92,33 @@ namespace LMSApp.API.Controllers
         [ResponseType(typeof(LogConexion))]
         public async Task<IHttpActionResult> PostLogConexion(LogConexion logConexion)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            db.LogConexions.Add(logConexion);
-            await db.SaveChangesAsync();
+            //db.LogConexions.Add(logConexion);
+            //await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = logConexion.CodActividadUsuario }, logConexion);
+            //return CreatedAtRoute("DefaultApi", new { id = logConexion.CodActividadUsuario }, logConexion);
+            BFLOGCONEXION objBFLogConexion = new BFLOGCONEXION();
+            ELOGCONEXION objLogConexion = new ELOGCONEXION();
+
+            objLogConexion.CodActivUsr = logConexion.CodActividadUsuario;
+            objLogConexion.CodUnidad = Convert.ToInt16(logConexion.CodUnidad);
+            objLogConexion.Inicio = logConexion.Inicio;
+            objLogConexion.Fin = logConexion.Fin;
+            objLogConexion.Dispositivo = logConexion.Dispositivo;
+            objLogConexion.Browser = logConexion.Browser;
+            objLogConexion.IP = logConexion.Ip;
+            objLogConexion.Terminada = logConexion.FlagTerminada;
+            objLogConexion.TiempoRestanteSeg = logConexion.TiempoRestanteSegunto;
+            objLogConexion.PasoUltimaVisita = logConexion.PasoUltimaVisita;
+            objLogConexion.Cerrada = logConexion.Cerrada;
+            objLogConexion.CodEmpresa = logConexion.CodEmpresa;
+
+            objBFLogConexion.Save(objLogConexion);
+            return Ok(logConexion);
         }
 
         // DELETE: api/LogConexions/5

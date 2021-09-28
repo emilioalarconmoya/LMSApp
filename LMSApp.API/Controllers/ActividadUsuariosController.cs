@@ -12,6 +12,8 @@ using System.Web.Http.Description;
 using LMSApp.Common.Models;
 using LMSApp.Domain.Models;
 using ATENEUS.CLASES.DAL;
+using ATENEUS.BUSINESS;
+using ATENEUS.CLASES.DAO;
 
 namespace LMSApp.API.Controllers
 {
@@ -90,35 +92,48 @@ namespace LMSApp.API.Controllers
 
         // PUT: api/ActividadUsuarios/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutActividadUsuario(int id, ActividadUsuario actividadUsuario)
+        public async Task<IHttpActionResult> PutActividadUsuario(ActividadUsuario actividadUsuario)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            if (id != actividadUsuario.CodActividadUsuario)
-            {
-                return BadRequest();
-            }
+            //if (id != actividadUsuario.CodActividadUsuario)
+            //{
+            //    return BadRequest();
+            //}
 
-            db.Entry(actividadUsuario).State = EntityState.Modified;
+            //db.Entry(actividadUsuario).State = EntityState.Modified;
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ActividadUsuarioExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            //try
+            //{
+            //    await db.SaveChangesAsync();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    if (!ActividadUsuarioExists(id))
+            //    {
+            //        return NotFound();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
+            BFACTIVIDADUSUARIO objBFActivUsr = new BFACTIVIDADUSUARIO();
+            EACTIVIDADUSUARIO objActivUsr = new EACTIVIDADUSUARIO();
+            objActivUsr = objBFActivUsr.GetACTIVIDADUSUARIO(actividadUsuario.CodActividadUsuario);
+            objActivUsr.CodEmpresa = actividadUsuario.CodEmpresa;
+            objActivUsr.NotaFinal = Convert.ToDouble(actividadUsuario.NotaFinal);
+            objActivUsr.Asistencia = Convert.ToDouble(actividadUsuario.Asistencia);
+            objActivUsr.CodEstado = Convert.ToInt16(actividadUsuario.CodEstado);
+            objActivUsr.FinReal = actividadUsuario.FinReal;
+            objActivUsr.HoraFinReal = actividadUsuario.HoraFinReal;
+            objActivUsr.FlagEstadoAprobacion = actividadUsuario.FlagEstadoAprobacion;
+            objActivUsr.IsPersisted = true;
+            objBFActivUsr.Save(objActivUsr);
+
 
             return StatusCode(HttpStatusCode.NoContent);
         }

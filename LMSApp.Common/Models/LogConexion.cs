@@ -17,6 +17,7 @@
         public string Dispositivo { get; set; }
         public string Browser { get; set; }
         public string Ip { get; set; }
+        public int CodEmpresa { get; set; }
 
     }
 }

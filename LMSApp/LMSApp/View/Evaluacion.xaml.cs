@@ -14,6 +14,7 @@
     using System.Collections.ObjectModel;
     using LMSApp.Common.Models;
     using LMSApp.Utiles;
+    using LMSApp.Console;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Evaluacion : ContentPage
@@ -314,8 +315,8 @@
                     ////    EnviarEncuesta();
                     ////}
 
-                    //ConsolaMaster objConsolaMaster = new ConsolaMaster();
-                    //objConsolaMaster.CierraLog(objSessionUsuario, codUni, codActUsr);
+                    ConsolaMaster objConsolaMaster = new ConsolaMaster();
+                    objConsolaMaster.CierraLog(codEmpresa, codUnidad, codActividadUsuario);
 
                     //Cargar(codUni, codActUsr);
                 }
