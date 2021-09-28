@@ -33,5 +33,9 @@
         public System.Data.Entity.DbSet<LMSApp.Common.Models.ActividadCapac> ActividadCapacs { get; set; }
 
         public System.Data.Entity.DbSet<LMSApp.Common.Models.Unidad> Unidads { get; set; }
+
+        public System.Data.Entity.DbSet<LMSApp.Common.Models.DatoUltimoLogConexion> DatoUltimoLogConexions { get; set; }
+
+        public System.Data.Entity.DbSet<LMSApp.Common.Models.LogConexion> LogConexions { get; set; }
     }
 }

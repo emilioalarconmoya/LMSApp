@@ -169,6 +169,22 @@ namespace ATENEUS.CLASES.DAL
             return dt;
         }
 
+        public DataTable SelectUnidadApp(int codUnidad)
+        {
+            DB db = DatabaseFactory.Instance.GetDatabase();
+            IDbDataParameter[] prms;
+            prms = db.GetArrayParameter(1);
+
+            prms[0] = db.GetParameter();
+            prms[0].Value = codUnidad;
+            prms[0].ParameterName = "@COD_UNIDAD";
+
+            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_select_UNIDAD_app", prms);
+
+            return dt;
+        }
+        
+
         public Int32 TiempoRestante(Int64 CodActivUsr, Int32 CodUnidad)
         {
             DB db = DatabaseFactory.Instance.GetDatabase();

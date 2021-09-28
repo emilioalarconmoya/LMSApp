@@ -60,6 +60,30 @@ namespace ATENEUS.CLASES.DAL
             return dt;
         }
 
+        public DataTable SelectDatosUltimoLogApp(int CodActivUsr, int CodUnidad, int CodEmpresa)
+        {
+            DB db = DatabaseFactory.Instance.GetDatabase();
+            IDbDataParameter[] prms;
+            prms = db.GetArrayParameter(3);
+
+            prms[0] = db.GetParameter();
+            prms[0].Value = CodActivUsr;
+            prms[0].ParameterName = "@cod_activ_usr";
+
+            prms[1] = db.GetParameter();
+            prms[1].Value = CodUnidad;
+            prms[1].ParameterName = "@cod_unidad";
+
+            prms[2] = db.GetParameter();
+            prms[2].Value = CodEmpresa;
+            prms[2].ParameterName = "@cod_empresa";
+
+
+            DataTable dt = db.ExecuteDataTable(CommandType.StoredProcedure, "proc_datos_ultimo_log_conexion_app", prms);
+
+            return dt;
+        }
+
         public Boolean LogCerrado(long CodActivUsr, Int32 CodUnidad,Int64 CodEmpresa)
         {
             DB db = DatabaseFactory.Instance.GetDatabase();

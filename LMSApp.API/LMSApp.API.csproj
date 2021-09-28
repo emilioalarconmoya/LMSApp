@@ -210,9 +210,11 @@
     <Compile Include="Controllers\ActividadUsuariosController.cs" />
     <Compile Include="Controllers\ActividadVigentesController.cs" />
     <Compile Include="Controllers\AlternativasController.cs" />
+    <Compile Include="Controllers\DatoUltimoLogConexionsController.cs" />
     <Compile Include="Controllers\EvaluacionsController.cs" />
     <Compile Include="Controllers\HistorialAlumnoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogConexionsController.cs" />
     <Compile Include="Controllers\PreguntaEvaluadasController.cs" />
     <Compile Include="Controllers\PreguntaEvaluadasController_.cs" />
     <Compile Include="Controllers\PreguntasController.cs" />
@@ -324,6 +326,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ATENEUS.BUSINESS\ATENEUS.BUSINESS.csproj">
+      <Project>{83105B95-459F-48B7-8DA4-AE3C2F64CDBE}</Project>
+      <Name>ATENEUS.BUSINESS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ATENEUS.CLASES\ATENEUS.CLASES.csproj">
       <Project>{263574B1-8E7B-42F7-AFAF-1FE1139B2356}</Project>
       <Name>ATENEUS.CLASES</Name>

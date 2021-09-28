@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using LMSApp.Common.Models;
 using LMSApp.Domain.Models;
+using ATENEUS.CLASES.DAL;
 
 namespace LMSApp.API.Controllers
 {
@@ -19,9 +20,43 @@ namespace LMSApp.API.Controllers
         private DataContext db = new DataContext();
 
         // GET: api/Unidads
-        public IQueryable<Unidad> GetUnidads()
+        public IQueryable<Unidad> GetUnidads(int codUnidad)
         {
-            return db.Unidads;
+            //return db.Unidads;
+            DLUNIDADList dLUNIDADList = new DLUNIDADList();
+            DataTable dataTable = dLUNIDADList.SelectUnidadApp(codUnidad);
+
+            var importdata = from x in dataTable.AsEnumerable()
+                             select new Unidad()
+                             {
+                                 CodUnidad = x.Field<int>("CodUnidad"),
+                                 CodTipoUnidad = x.Field<int>("CodTipoUnidad"),
+                                 CodTemaUnidad = x.Field<int>("CodTemaUnidad"),
+                                 Nombre = x.Field<string>("Nombre"),
+                                 Archivo = x.Field<string>("Archivo"),
+                                 FlagAvisaTermino = x.Field<bool>("FlagAvisaTermino"),
+                                 Contenido = x.Field<string>("Contenido"),
+                                 Criterios = x.Field<string>("Criterios"),
+                                 NumeroPreguntaAleatoria = x.Field<int>("NumeroPreguntaAleatoria"),
+                                 TiempoSegundos = x.Field<int>("TiempoSegundos"),
+                                 FlagMostrarResultados = x.Field<bool>("FlagMostrarResultados"),
+                                 FlagMostrarRespuestaCorrecta = x.Field<bool>("FlagMostrarRespuestaCorrecta"),
+                                 Descripcion = x.Field<string>("Descripcion"),
+                                 NombreTipoUnidad = x.Field<string>("NombreTipoUnidad"),
+                                 NombreTemaUnidad = x.Field<string>("NombreTemaUnidad"),
+                                 RutTutor = x.Field<int>("RutTutor"),
+                                 FlagActivo = x.Field<bool>("FlagActivo"),
+                                 PreguntaPorPagina = x.Field<int>("PreguntaPorPagina"),
+                                 UsuarioSalaVirtual = x.Field<string>("UsuarioSalaVirtual"),
+                                 PassSalaVirtual = x.Field<string>("PassSalaVirtual"),
+                                 UrlSalaVirtual = x.Field<string>("UrlSalaVirtual"),
+                                 CodtipoSalaVirtual = x.Field<int>("CodtipoSalaVirtual"),
+                                 CodTipoEncuesta = x.Field<int>("CodTipoEncuesta"),
+
+
+                             };
+
+            return importdata.AsQueryable();
         }
 
         // GET: api/Unidads/5

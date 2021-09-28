@@ -49,8 +49,10 @@
     <Compile Include="Models\ActividadUsuario.cs" />
     <Compile Include="Models\ActividadVigente.cs" />
     <Compile Include="Models\Alternativa.cs" />
+    <Compile Include="Models\DatoUltimoLogConexion.cs" />
     <Compile Include="Models\Evaluacion.cs" />
     <Compile Include="Models\HistorialAlumno.cs" />
+    <Compile Include="Models\LogConexion.cs" />
     <Compile Include="Models\Pregunta.cs" />
     <Compile Include="Models\PreguntaEvaluada.cs" />
     <Compile Include="Models\PreguntaUnidad.cs" />
