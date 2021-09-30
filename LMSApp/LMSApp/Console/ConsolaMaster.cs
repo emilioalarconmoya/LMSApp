@@ -16,7 +16,7 @@
         private List<DatoUltimoLogConexion> datoUltimoLogConexionsList;
         public async void CierraLog(int codEmpresa, int codUnidad, int codActividadUsuario)
         {
-
+            this.apiService = new ApiService();
             var connection = await this.apiService.CheckConnection();
             if (codUnidad != 0)
             {

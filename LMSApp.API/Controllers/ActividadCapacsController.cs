@@ -12,6 +12,7 @@ using ATENEUS.CLASES.DAL;
 
 namespace LMSApp.API.Controllers
 {
+    //[Authorize]
     public class ActividadCapacsController : ApiController
     {
         private DataContext db = new DataContext();

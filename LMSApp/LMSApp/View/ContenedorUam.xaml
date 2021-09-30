@@ -2,12 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LMSApp.View.ContenedorUam"
-             Title="Contenedor Uams">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout
+            BindingContext="{Binding ContendorUams}"
+            Orientation="Horizontal">
+            <WebView
+                WidthRequest="1000"
+                HeightRequest="1000"
+                x:Name="contenedor"
+                Source="{Binding RutaUam}">
+            </WebView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

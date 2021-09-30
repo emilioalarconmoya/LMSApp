@@ -28,7 +28,9 @@
 
         private async void SelectUnidad()
         {
+            this.apiService = new ApiService();
             Application.Current.Properties["CodUnidad"] = this.CodUnidad;
+            Application.Current.Properties["Archivo"] = this.Archivo;
 
             var connection = await this.apiService.CheckConnection();
             if (!connection.IsSucces)

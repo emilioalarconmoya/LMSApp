@@ -23,6 +23,7 @@
         private ApiService apiService;
         private List<PreguntaUnidad> preguntaUnidadList;
         private List<PreguntaEvaluada> preguntaEvaluadas;
+        private List<ActividadUsuario> actividadUsuarioList;
         private List<Common.Models.Evaluacion> preguntaEvaluacion;
         private int codUnidad = (int)Application.Current.Properties["CodUnidad"];
         private int codActividadUsuario = (int)Application.Current.Properties["CodActividadUsuario"];
@@ -47,6 +48,15 @@
             var url = Application.Current.Resources["UrlAPI"].ToString();
             //la validacion de conexion a internet tambien permite que demore un poco para poder cargar las keys que se encuentran en el App.xaml
 
+            //actividad usuario
+            var ResponseActividadUsuario = await this.apiService.GetList<ActividadUsuario>(url, "/api", "/ActividadUsuarios?codActividadUsuario=" + codActividadUsuario);
+            if (!ResponseActividadUsuario.IsSucces)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", ResponseActividadUsuario.Message, "Aceptar");
+                return;
+            }
+            actividadUsuarioList = (List<ActividadUsuario>)ResponseActividadUsuario.Result;
+
 
             var response = await this.apiService.GetList<PreguntaEvaluada>(url, "/api", "/PreguntaEvaluadas?codUnidad=" + codUnidad + "&codActividadUsaurio=" + codActividadUsuario + "&codEmpresa=" + codEmpresa);
             if (!response.IsSucces)
@@ -56,6 +66,8 @@
             }
 
             preguntaEvaluadas = (List<PreguntaEvaluada>)response.Result;
+
+
 
 
             
@@ -116,6 +128,7 @@
                         contenedorPreguntas.Children.Add(alternativa);
                     }
                 }
+                await DisplayAlert("ATENCIÓN", "Has finalizado la evalución con nota: " + Math.Round(actividadUsuarioList[0].NotaFinal, 1).ToString(), "Aceptar");
             }
             else
             {
@@ -318,7 +331,7 @@
                     ConsolaMaster objConsolaMaster = new ConsolaMaster();
                     objConsolaMaster.CierraLog(codEmpresa, codUnidad, codActividadUsuario);
 
-                    //Cargar(codUni, codActUsr);
+                    CargarEva();
                 }
                 else
                 {

@@ -15,6 +15,12 @@ namespace LMSApp.View
 		public ContenedorUam ()
 		{
 			InitializeComponent ();
+			
+		}
+		protected override bool OnBackButtonPressed()
+		{
+			DisplayAlert("alerta", "funciona", "aceptar");
+			return true;
 		}
 	}
 }

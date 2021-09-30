@@ -76,6 +76,7 @@
 
         }
 
+        [System.Obsolete]
         public async void Login()
         {
             if(string.IsNullOrEmpty(this.usuarioName))
@@ -139,7 +140,7 @@
             //MainViewModel.GetInstance().HistorialAlumnos = new HistorialAlumnosViewModel();
             //await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new HistorialAlumnoPage()));
             MainViewModel.GetInstance().ActividadVigentes = new ActividadVigentesViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new ActividadVigentesPage()));
+            Application.Current.MainPage = new NavigationPage(new MasterPage());
         }
 
         #endregion
